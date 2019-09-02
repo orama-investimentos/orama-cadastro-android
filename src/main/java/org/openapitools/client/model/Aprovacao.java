@@ -18,17 +18,20 @@ import com.google.gson.annotations.SerializedName;
 @ApiModel(description = "")
 public class Aprovacao {
   
+  public enum AprovadoEnum {
+     APROVADO,  PENDENTE,  EM ANÁLISE,  INDEFINIDO, 
+  };
   @SerializedName("aprovado")
-  private Boolean aprovado = null;
+  private AprovadoEnum aprovado = INDEFINIDO;
 
   /**
-   * Estado de aprovação do perfil, true caso já tenha sido aprovado, false caso contrário.
+   * Estado de aprovação do perfil.
    **/
-  @ApiModelProperty(value = "Estado de aprovação do perfil, true caso já tenha sido aprovado, false caso contrário.")
-  public Boolean getAprovado() {
+  @ApiModelProperty(value = "Estado de aprovação do perfil.")
+  public AprovadoEnum getAprovado() {
     return aprovado;
   }
-  public void setAprovado(Boolean aprovado) {
+  public void setAprovado(AprovadoEnum aprovado) {
     this.aprovado = aprovado;
   }
 

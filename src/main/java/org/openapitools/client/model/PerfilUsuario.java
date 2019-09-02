@@ -171,7 +171,7 @@ public class PerfilUsuario {
   /**
    * Nome da mãe do usuário
    **/
-  @ApiModelProperty(value = "Nome da mãe do usuário")
+  @ApiModelProperty(required = true, value = "Nome da mãe do usuário")
   public String getNomeMae() {
     return nomeMae;
   }
@@ -180,9 +180,9 @@ public class PerfilUsuario {
   }
 
   /**
-   * Nome do pai do usuário
+   * Nome do pai do usuário. O nome deve ser string vazia ou null caso o pai seja desconhecido.
    **/
-  @ApiModelProperty(value = "Nome do pai do usuário")
+  @ApiModelProperty(value = "Nome do pai do usuário. O nome deve ser string vazia ou null caso o pai seja desconhecido.")
   public String getNomePai() {
     return nomePai;
   }
@@ -202,7 +202,7 @@ public class PerfilUsuario {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   public List<Documento> getDocumento() {
     return documento;
   }
@@ -222,7 +222,7 @@ public class PerfilUsuario {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   public Endereco getEndereco() {
     return endereco;
   }

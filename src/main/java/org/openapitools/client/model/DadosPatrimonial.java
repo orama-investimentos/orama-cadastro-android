@@ -22,67 +22,67 @@ import com.google.gson.annotations.SerializedName;
 @ApiModel(description = "Informação sobre o Patrimônio do usuário")
 public class DadosPatrimonial {
   
-  public enum ValorDePatrimonioEnum {
+  public enum FaixaAplicacoesEnum {
      0,  1,  2,  3,  4,  5,  6, 
   };
-  @SerializedName("valorDePatrimonio")
-  private ValorDePatrimonioEnum valorDePatrimonio = null;
-  @SerializedName("valorDeInvestimento")
-  private BigDecimal valorDeInvestimento = null;
-  public enum RendimentoMensalEnum {
+  @SerializedName("faixaAplicacoes")
+  private FaixaAplicacoesEnum faixaAplicacoes = null;
+  @SerializedName("valorAplicacoes")
+  private BigDecimal valorAplicacoes = null;
+  public enum FaixaRendimentosEnum {
      0,  1,  2,  3,  4,  5,  6, 
   };
-  @SerializedName("rendimentoMensal")
-  private RendimentoMensalEnum rendimentoMensal = null;
-  @SerializedName("outrosBensValor")
-  private BigDecimal outrosBensValor = null;
+  @SerializedName("faixaRendimentos")
+  private FaixaRendimentosEnum faixaRendimentos = null;
+  @SerializedName("valorOutrosBens")
+  private BigDecimal valorOutrosBens = null;
 
   /**
-   * Código do valor total do patrimonio. Cada número representa um intervalo de valor em reais (R$). Por exemplo, '0': 'Nenhum', '1': 'Até R$50.000,00', '2': 'De R$50.000,01 à R$100.000,00', '3': 'De R$100.000,01 à R$200.000,00', '4': 'De R$200.000,01 à R$300.000,00', '5': 'De R$300.000,01 à R$1.000.000,00', '6': 'Acima de R$1.000.000,00'
+   * Código do valor total em aplicações financeiras considerando outras instituições. Cada número representa um intervalo de valor em reais (R$). Por exemplo, '0': 'Nenhum', '1': 'Até R$50.000,00', '2': 'De R$50.000,01 à R$100.000,00', '3': 'De R$100.000,01 à R$200.000,00', '4': 'De R$200.000,01 à R$300.000,00', '5': 'De R$300.000,01 à R$1.000.000,00', '6': 'Acima de R$1.000.000,00'
    **/
-  @ApiModelProperty(value = "Código do valor total do patrimonio. Cada número representa um intervalo de valor em reais (R$). Por exemplo, '0': 'Nenhum', '1': 'Até R$50.000,00', '2': 'De R$50.000,01 à R$100.000,00', '3': 'De R$100.000,01 à R$200.000,00', '4': 'De R$200.000,01 à R$300.000,00', '5': 'De R$300.000,01 à R$1.000.000,00', '6': 'Acima de R$1.000.000,00'")
-  public ValorDePatrimonioEnum getValorDePatrimonio() {
-    return valorDePatrimonio;
+  @ApiModelProperty(value = "Código do valor total em aplicações financeiras considerando outras instituições. Cada número representa um intervalo de valor em reais (R$). Por exemplo, '0': 'Nenhum', '1': 'Até R$50.000,00', '2': 'De R$50.000,01 à R$100.000,00', '3': 'De R$100.000,01 à R$200.000,00', '4': 'De R$200.000,01 à R$300.000,00', '5': 'De R$300.000,01 à R$1.000.000,00', '6': 'Acima de R$1.000.000,00'")
+  public FaixaAplicacoesEnum getFaixaAplicacoes() {
+    return faixaAplicacoes;
   }
-  public void setValorDePatrimonio(ValorDePatrimonioEnum valorDePatrimonio) {
-    this.valorDePatrimonio = valorDePatrimonio;
+  public void setFaixaAplicacoes(FaixaAplicacoesEnum faixaAplicacoes) {
+    this.faixaAplicacoes = faixaAplicacoes;
   }
 
   /**
-   * Valor em R$ disponível para investimento
-   * minimum: 0.1
+   * Valor total em R$ em aplicações financeiras, considerando outras instituições. Este campo só deve ser preenchido caso 'faixaAplicacoes' seja acima de R$ 1.000.000,00
+   * minimum: 1000000
    * maximum: 999999999999.99
    **/
-  @ApiModelProperty(value = "Valor em R$ disponível para investimento")
-  public BigDecimal getValorDeInvestimento() {
-    return valorDeInvestimento;
+  @ApiModelProperty(value = "Valor total em R$ em aplicações financeiras, considerando outras instituições. Este campo só deve ser preenchido caso 'faixaAplicacoes' seja acima de R$ 1.000.000,00")
+  public BigDecimal getValorAplicacoes() {
+    return valorAplicacoes;
   }
-  public void setValorDeInvestimento(BigDecimal valorDeInvestimento) {
-    this.valorDeInvestimento = valorDeInvestimento;
+  public void setValorAplicacoes(BigDecimal valorAplicacoes) {
+    this.valorAplicacoes = valorAplicacoes;
   }
 
   /**
    * Código do valor que representa a renta bruta mensal. Cada número representa um intervalo de valor em reais (R$). Por exemplo, '0': 'Nenhum', '1': 'Até R$5.000,00', '2': 'De R$5.000,01 à R$10.000,00', '3': 'De R$10.000,01 à R$20.000,00', '4': 'De R$20.000,01 à R$30.000,00', '5': 'De R$30.000,01 à R$100.000,00', '6': 'Acima de R$100.000,00'
    **/
   @ApiModelProperty(value = "Código do valor que representa a renta bruta mensal. Cada número representa um intervalo de valor em reais (R$). Por exemplo, '0': 'Nenhum', '1': 'Até R$5.000,00', '2': 'De R$5.000,01 à R$10.000,00', '3': 'De R$10.000,01 à R$20.000,00', '4': 'De R$20.000,01 à R$30.000,00', '5': 'De R$30.000,01 à R$100.000,00', '6': 'Acima de R$100.000,00'")
-  public RendimentoMensalEnum getRendimentoMensal() {
-    return rendimentoMensal;
+  public FaixaRendimentosEnum getFaixaRendimentos() {
+    return faixaRendimentos;
   }
-  public void setRendimentoMensal(RendimentoMensalEnum rendimentoMensal) {
-    this.rendimentoMensal = rendimentoMensal;
+  public void setFaixaRendimentos(FaixaRendimentosEnum faixaRendimentos) {
+    this.faixaRendimentos = faixaRendimentos;
   }
 
   /**
-   * Valor em R$ de outros bens do usuário
+   * Valor total em R$ incluindo móveis, imóveis e outros bens do usuário
    * minimum: 0.1
    * maximum: 999999999999.99
    **/
-  @ApiModelProperty(value = "Valor em R$ de outros bens do usuário")
-  public BigDecimal getOutrosBensValor() {
-    return outrosBensValor;
+  @ApiModelProperty(value = "Valor total em R$ incluindo móveis, imóveis e outros bens do usuário")
+  public BigDecimal getValorOutrosBens() {
+    return valorOutrosBens;
   }
-  public void setOutrosBensValor(BigDecimal outrosBensValor) {
-    this.outrosBensValor = outrosBensValor;
+  public void setValorOutrosBens(BigDecimal valorOutrosBens) {
+    this.valorOutrosBens = valorOutrosBens;
   }
 
 
@@ -95,19 +95,19 @@ public class DadosPatrimonial {
       return false;
     }
     DadosPatrimonial dadosPatrimonial = (DadosPatrimonial) o;
-    return (this.valorDePatrimonio == null ? dadosPatrimonial.valorDePatrimonio == null : this.valorDePatrimonio.equals(dadosPatrimonial.valorDePatrimonio)) &&
-        (this.valorDeInvestimento == null ? dadosPatrimonial.valorDeInvestimento == null : this.valorDeInvestimento.equals(dadosPatrimonial.valorDeInvestimento)) &&
-        (this.rendimentoMensal == null ? dadosPatrimonial.rendimentoMensal == null : this.rendimentoMensal.equals(dadosPatrimonial.rendimentoMensal)) &&
-        (this.outrosBensValor == null ? dadosPatrimonial.outrosBensValor == null : this.outrosBensValor.equals(dadosPatrimonial.outrosBensValor));
+    return (this.faixaAplicacoes == null ? dadosPatrimonial.faixaAplicacoes == null : this.faixaAplicacoes.equals(dadosPatrimonial.faixaAplicacoes)) &&
+        (this.valorAplicacoes == null ? dadosPatrimonial.valorAplicacoes == null : this.valorAplicacoes.equals(dadosPatrimonial.valorAplicacoes)) &&
+        (this.faixaRendimentos == null ? dadosPatrimonial.faixaRendimentos == null : this.faixaRendimentos.equals(dadosPatrimonial.faixaRendimentos)) &&
+        (this.valorOutrosBens == null ? dadosPatrimonial.valorOutrosBens == null : this.valorOutrosBens.equals(dadosPatrimonial.valorOutrosBens));
   }
 
   @Override
   public int hashCode() {
     int result = 17;
-    result = 31 * result + (this.valorDePatrimonio == null ? 0: this.valorDePatrimonio.hashCode());
-    result = 31 * result + (this.valorDeInvestimento == null ? 0: this.valorDeInvestimento.hashCode());
-    result = 31 * result + (this.rendimentoMensal == null ? 0: this.rendimentoMensal.hashCode());
-    result = 31 * result + (this.outrosBensValor == null ? 0: this.outrosBensValor.hashCode());
+    result = 31 * result + (this.faixaAplicacoes == null ? 0: this.faixaAplicacoes.hashCode());
+    result = 31 * result + (this.valorAplicacoes == null ? 0: this.valorAplicacoes.hashCode());
+    result = 31 * result + (this.faixaRendimentos == null ? 0: this.faixaRendimentos.hashCode());
+    result = 31 * result + (this.valorOutrosBens == null ? 0: this.valorOutrosBens.hashCode());
     return result;
   }
 
@@ -116,10 +116,10 @@ public class DadosPatrimonial {
     StringBuilder sb = new StringBuilder();
     sb.append("class DadosPatrimonial {\n");
     
-    sb.append("  valorDePatrimonio: ").append(valorDePatrimonio).append("\n");
-    sb.append("  valorDeInvestimento: ").append(valorDeInvestimento).append("\n");
-    sb.append("  rendimentoMensal: ").append(rendimentoMensal).append("\n");
-    sb.append("  outrosBensValor: ").append(outrosBensValor).append("\n");
+    sb.append("  faixaAplicacoes: ").append(faixaAplicacoes).append("\n");
+    sb.append("  valorAplicacoes: ").append(valorAplicacoes).append("\n");
+    sb.append("  faixaRendimentos: ").append(faixaRendimentos).append("\n");
+    sb.append("  valorOutrosBens: ").append(valorOutrosBens).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

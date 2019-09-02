@@ -58,20 +58,18 @@ Please follow the [installation](#installation) instruction and execute the foll
 
 ```java
 
-import org.openapitools.client.api.DevelopersApi;
+import org.openapitools.client.api.UsersApi;
 
-public class DevelopersApiExample {
+public class UsersApiExample {
 
     public static void main(String[] args) {
-        DevelopersApi apiInstance = new DevelopersApi();
-        BigDecimal limite = 1000; // BigDecimal | Número máximo de elementos
-        BigDecimal deslocamento = 10; // BigDecimal | Número de deslocamento (offset) dos elementos
-        String campos = login,profissao,usPerson; // String | Lista de campos para ser inclusivamente filtrados
+        UsersApi apiInstance = new UsersApi();
+        UsuarioSenhaObjeto usuarioSenhaObjeto = new UsuarioSenhaObjeto(); // UsuarioSenhaObjeto | Dados para autenticação do usuário
         try {
-            ListaPerfilUsuario result = apiInstance.perfilGet(limite, deslocamento, campos);
+            AutenticacaoObjeto result = apiInstance.accountAutenticacaoPost(usuarioSenhaObjeto);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling DevelopersApi#perfilGet");
+            System.err.println("Exception when calling UsersApi#accountAutenticacaoPost");
             e.printStackTrace();
         }
     }
@@ -85,7 +83,6 @@ All URIs are relative to *https://cadastro.orama.com.br/api/contas/v1.0*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DevelopersApi* | [**perfilGet**](docs/DevelopersApi.md#perfilGet) | **GET** /perfil/ | Retorna uma lista composta por objetos do tipo perfil
 *UsersApi* | [**accountAutenticacaoPost**](docs/UsersApi.md#accountAutenticacaoPost) | **POST** /autenticacao/ | Autentica um usuário que ainda não é cliente.
 *UsersApi* | [**accountDocumentoConfirmacaoGet**](docs/UsersApi.md#accountDocumentoConfirmacaoGet) | **GET** /perfil/{cpf}/documento/confirmacao/ | Consulta o status de confirmação do documento que foi submetido
 *UsersApi* | [**accountDocumentoPut**](docs/UsersApi.md#accountDocumentoPut) | **PUT** /perfil/{cpf}/documento/ | Anexa ou atualiza documento para conferencia de autenticidade do perfil.
@@ -128,10 +125,6 @@ Class | Method | HTTP request | Description
 ## Documentation for Authorization
 
 Authentication schemes defined for the API:
-### Api-Key
-
-- **Type**: HTTP basic authentication
-
 ### JWT
 
 - **Type**: HTTP basic authentication

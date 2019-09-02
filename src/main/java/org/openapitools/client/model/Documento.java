@@ -17,9 +17,9 @@ import io.swagger.annotations.*;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Documentação do Usuário
+ * Documentação do Usuário. Deve ser enviado somente um documento na lista de documentos &#39;documento&#39;.
  **/
-@ApiModel(description = "Documentação do Usuário")
+@ApiModel(description = "Documentação do Usuário. Deve ser enviado somente um documento na lista de documentos 'documento'.")
 public class Documento {
   
   public enum TipoDocumentoEnum {

@@ -16,28 +16,35 @@ import io.swagger.annotations.*;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Modelo de Conta bancária no sistema bancário brasileiro
+ * Modelo de Conta bancária no sistema bancário brasileiro. Deve ser enviado somente uma conta bancária na lista de &#39;contaBancaria&#39;.
  **/
-@ApiModel(description = "Modelo de Conta bancária no sistema bancário brasileiro")
+@ApiModel(description = "Modelo de Conta bancária no sistema bancário brasileiro. Deve ser enviado somente uma conta bancária na lista de 'contaBancaria'.")
 public class ContaBancaria {
   
   @SerializedName("banco")
   private String banco = null;
+  public enum TipoEnum {
+     CC,  CP, 
+  };
+  @SerializedName("tipo")
+  private TipoEnum tipo = CC;
   @SerializedName("agencia")
   private String agencia = null;
   @SerializedName("conta")
   private String conta = null;
   @SerializedName("digito")
   private String digito = null;
-  @SerializedName("cotitularConjuge")
-  private Boolean cotitularConjuge = null;
-  @SerializedName("cpfConjuge")
-  private String cpfConjuge = null;
+  @SerializedName("contaConjunta")
+  private Boolean contaConjunta = false;
+  @SerializedName("segundoParticipanteTitular")
+  private Boolean segundoParticipanteTitular = false;
+  @SerializedName("cpfCotitular")
+  private String cpfCotitular = null;
 
   /**
-   * Banco da conta, string com o numero do banco
+   * Banco da conta, string com o número do banco
    **/
-  @ApiModelProperty(required = true, value = "Banco da conta, string com o numero do banco")
+  @ApiModelProperty(required = true, value = "Banco da conta, string com o número do banco")
   public String getBanco() {
     return banco;
   }
@@ -46,9 +53,20 @@ public class ContaBancaria {
   }
 
   /**
-   * Agencia bancaria da conta corrente
+   * Tipo da conta bancária. O tipo deve ser conta corrente (CC) ou conta poupança (CP).
    **/
-  @ApiModelProperty(required = true, value = "Agencia bancaria da conta corrente")
+  @ApiModelProperty(required = true, value = "Tipo da conta bancária. O tipo deve ser conta corrente (CC) ou conta poupança (CP).")
+  public TipoEnum getTipo() {
+    return tipo;
+  }
+  public void setTipo(TipoEnum tipo) {
+    this.tipo = tipo;
+  }
+
+  /**
+   * Agência da conta bancária
+   **/
+  @ApiModelProperty(required = true, value = "Agência da conta bancária")
   public String getAgencia() {
     return agencia;
   }
@@ -57,9 +75,9 @@ public class ContaBancaria {
   }
 
   /**
-   * Número da conta corrente sem o dígito verificador
+   * Número da conta bancária sem o dígito verificador
    **/
-  @ApiModelProperty(required = true, value = "Número da conta corrente sem o dígito verificador")
+  @ApiModelProperty(required = true, value = "Número da conta bancária sem o dígito verificador")
   public String getConta() {
     return conta;
   }
@@ -68,9 +86,9 @@ public class ContaBancaria {
   }
 
   /**
-   * Digito verificador da conta corrente
+   * Digito verificador da conta bancária
    **/
-  @ApiModelProperty(required = true, value = "Digito verificador da conta corrente")
+  @ApiModelProperty(required = true, value = "Digito verificador da conta bancária")
   public String getDigito() {
     return digito;
   }
@@ -79,25 +97,36 @@ public class ContaBancaria {
   }
 
   /**
-   * Informação se o conjuge é co-titular da conta corrente. Necessário caso seja especificado o cpfConjuge
+   * Informação que define se é uma conta conjunta. Caso seja, deve ser definido como true.
    **/
-  @ApiModelProperty(value = "Informação se o conjuge é co-titular da conta corrente. Necessário caso seja especificado o cpfConjuge")
-  public Boolean getCotitularConjuge() {
-    return cotitularConjuge;
+  @ApiModelProperty(value = "Informação que define se é uma conta conjunta. Caso seja, deve ser definido como true.")
+  public Boolean getContaConjunta() {
+    return contaConjunta;
   }
-  public void setCotitularConjuge(Boolean cotitularConjuge) {
-    this.cotitularConjuge = cotitularConjuge;
+  public void setContaConjunta(Boolean contaConjunta) {
+    this.contaConjunta = contaConjunta;
   }
 
   /**
-   * CPF do conjuge caso seja conta conjunta. CPF deve ser válido. O CPF tem que ter os 11 dígitos com a máscara incluindo os pontos e hífen.
+   * Informação se o segundo participante (co-titular) é o titular da conta, caso não seja, o primeiro participante quem esta preenchendo a conta é o titular.
    **/
-  @ApiModelProperty(value = "CPF do conjuge caso seja conta conjunta. CPF deve ser válido. O CPF tem que ter os 11 dígitos com a máscara incluindo os pontos e hífen.")
-  public String getCpfConjuge() {
-    return cpfConjuge;
+  @ApiModelProperty(value = "Informação se o segundo participante (co-titular) é o titular da conta, caso não seja, o primeiro participante quem esta preenchendo a conta é o titular.")
+  public Boolean getSegundoParticipanteTitular() {
+    return segundoParticipanteTitular;
   }
-  public void setCpfConjuge(String cpfConjuge) {
-    this.cpfConjuge = cpfConjuge;
+  public void setSegundoParticipanteTitular(Boolean segundoParticipanteTitular) {
+    this.segundoParticipanteTitular = segundoParticipanteTitular;
+  }
+
+  /**
+   * CPF do co-titular caso seja conta conjunta. CPF deve ser válido. O CPF tem que ter os 11 dígitos com a máscara incluindo os pontos e hífen.
+   **/
+  @ApiModelProperty(value = "CPF do co-titular caso seja conta conjunta. CPF deve ser válido. O CPF tem que ter os 11 dígitos com a máscara incluindo os pontos e hífen.")
+  public String getCpfCotitular() {
+    return cpfCotitular;
+  }
+  public void setCpfCotitular(String cpfCotitular) {
+    this.cpfCotitular = cpfCotitular;
   }
 
 
@@ -111,22 +140,26 @@ public class ContaBancaria {
     }
     ContaBancaria contaBancaria = (ContaBancaria) o;
     return (this.banco == null ? contaBancaria.banco == null : this.banco.equals(contaBancaria.banco)) &&
+        (this.tipo == null ? contaBancaria.tipo == null : this.tipo.equals(contaBancaria.tipo)) &&
         (this.agencia == null ? contaBancaria.agencia == null : this.agencia.equals(contaBancaria.agencia)) &&
         (this.conta == null ? contaBancaria.conta == null : this.conta.equals(contaBancaria.conta)) &&
         (this.digito == null ? contaBancaria.digito == null : this.digito.equals(contaBancaria.digito)) &&
-        (this.cotitularConjuge == null ? contaBancaria.cotitularConjuge == null : this.cotitularConjuge.equals(contaBancaria.cotitularConjuge)) &&
-        (this.cpfConjuge == null ? contaBancaria.cpfConjuge == null : this.cpfConjuge.equals(contaBancaria.cpfConjuge));
+        (this.contaConjunta == null ? contaBancaria.contaConjunta == null : this.contaConjunta.equals(contaBancaria.contaConjunta)) &&
+        (this.segundoParticipanteTitular == null ? contaBancaria.segundoParticipanteTitular == null : this.segundoParticipanteTitular.equals(contaBancaria.segundoParticipanteTitular)) &&
+        (this.cpfCotitular == null ? contaBancaria.cpfCotitular == null : this.cpfCotitular.equals(contaBancaria.cpfCotitular));
   }
 
   @Override
   public int hashCode() {
     int result = 17;
     result = 31 * result + (this.banco == null ? 0: this.banco.hashCode());
+    result = 31 * result + (this.tipo == null ? 0: this.tipo.hashCode());
     result = 31 * result + (this.agencia == null ? 0: this.agencia.hashCode());
     result = 31 * result + (this.conta == null ? 0: this.conta.hashCode());
     result = 31 * result + (this.digito == null ? 0: this.digito.hashCode());
-    result = 31 * result + (this.cotitularConjuge == null ? 0: this.cotitularConjuge.hashCode());
-    result = 31 * result + (this.cpfConjuge == null ? 0: this.cpfConjuge.hashCode());
+    result = 31 * result + (this.contaConjunta == null ? 0: this.contaConjunta.hashCode());
+    result = 31 * result + (this.segundoParticipanteTitular == null ? 0: this.segundoParticipanteTitular.hashCode());
+    result = 31 * result + (this.cpfCotitular == null ? 0: this.cpfCotitular.hashCode());
     return result;
   }
 
@@ -136,11 +169,13 @@ public class ContaBancaria {
     sb.append("class ContaBancaria {\n");
     
     sb.append("  banco: ").append(banco).append("\n");
+    sb.append("  tipo: ").append(tipo).append("\n");
     sb.append("  agencia: ").append(agencia).append("\n");
     sb.append("  conta: ").append(conta).append("\n");
     sb.append("  digito: ").append(digito).append("\n");
-    sb.append("  cotitularConjuge: ").append(cotitularConjuge).append("\n");
-    sb.append("  cpfConjuge: ").append(cpfConjuge).append("\n");
+    sb.append("  contaConjunta: ").append(contaConjunta).append("\n");
+    sb.append("  segundoParticipanteTitular: ").append(segundoParticipanteTitular).append("\n");
+    sb.append("  cpfCotitular: ").append(cpfCotitular).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

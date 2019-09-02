@@ -1670,7 +1670,7 @@ public class UsersApi {
   }
   /**
   * Submete o perfil de usuário associado a um login para ser criado como cliente.
-  * Submete o perfil de usuário associado a um login para ser criado como cliente. Após submissão deste POST, o perfil não poderá mais ser alterado. Para alterar ou inserir informações no perfil antes de submeter o perfil o método PUT deve ser utilizado.
+  * Submete o perfil de usuário associado a um login para ser criado como cliente. É necessário validar ambos o número do celular e o e-mail para que a submissão seja aceita, veja os endpoints /perfil/{cpf}/celular/autenticacao/ e /perfil/{cpf}/email/autenticacao/. Após submissão deste POST, o perfil não poderá mais ser alterado. Para alterar ou inserir informações no perfil antes de submeter o perfil o método PUT deve ser utilizado.
    * @param cpf CPF do perfil
    * @return void
   */
@@ -1732,7 +1732,7 @@ public class UsersApi {
 
       /**
    * Submete o perfil de usuário associado a um login para ser criado como cliente.
-   * Submete o perfil de usuário associado a um login para ser criado como cliente. Após submissão deste POST, o perfil não poderá mais ser alterado. Para alterar ou inserir informações no perfil antes de submeter o perfil o método PUT deve ser utilizado.
+   * Submete o perfil de usuário associado a um login para ser criado como cliente. É necessário validar ambos o número do celular e o e-mail para que a submissão seja aceita, veja os endpoints /perfil/{cpf}/celular/autenticacao/ e /perfil/{cpf}/email/autenticacao/. Após submissão deste POST, o perfil não poderá mais ser alterado. Para alterar ou inserir informações no perfil antes de submeter o perfil o método PUT deve ser utilizado.
    * @param cpf CPF do perfil
   */
   public void accountPerfilPost (String cpf, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
