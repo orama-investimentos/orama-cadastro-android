@@ -42,7 +42,7 @@ public class Documento {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   public TipoDocumentoEnum getTipoDocumento() {
     return tipoDocumento;
   }
@@ -52,7 +52,7 @@ public class Documento {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   public String getNumeroDocumento() {
     return numeroDocumento;
   }
@@ -63,7 +63,7 @@ public class Documento {
   /**
    * Orgão expedidor de acordo com o tipo de documento
    **/
-  @ApiModelProperty(value = "Orgão expedidor de acordo com o tipo de documento")
+  @ApiModelProperty(required = true, value = "Orgão expedidor de acordo com o tipo de documento")
   public String getOrgaoExpedidor() {
     return orgaoExpedidor;
   }
@@ -74,7 +74,7 @@ public class Documento {
   /**
    * Unidade da Federação onde foi emitido o documeto
    **/
-  @ApiModelProperty(value = "Unidade da Federação onde foi emitido o documeto")
+  @ApiModelProperty(required = true, value = "Unidade da Federação onde foi emitido o documeto")
   public String getUfEmissao() {
     return ufEmissao;
   }

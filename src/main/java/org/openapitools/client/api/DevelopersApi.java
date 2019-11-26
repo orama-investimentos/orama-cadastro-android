@@ -23,8 +23,9 @@ import java.util.*;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
-import java.math.BigDecimal;
-import org.openapitools.client.model.ListaPerfilUsuario;
+import org.openapitools.client.model.Erro;
+import org.openapitools.client.model.LoginCriado;
+import org.openapitools.client.model.LoginSenhaObjeto;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
@@ -57,18 +58,21 @@ public class DevelopersApi {
   }
 
   /**
-  * Retorna uma lista composta por objetos do tipo perfil
-  * Returna uma lista composta por objetos do tipo perfil
-   * @param limite Número máximo de elementos
-   * @param deslocamento Número de deslocamento (offset) dos elementos
-   * @param campos Lista de campos para ser inclusivamente filtrados
-   * @return ListaPerfilUsuario
+  * Cria um login para usuário.
+  * Cria um novo login que será usado para acesso ao sistema.
+   * @param loginSenhaObjeto Dados para criação do login
+   * @return LoginCriado
   */
-  public ListaPerfilUsuario perfilGet (BigDecimal limite, BigDecimal deslocamento, String campos) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
-    Object postBody = null;
+  public LoginCriado accountIdentificacaoParceiroPost (LoginSenhaObjeto loginSenhaObjeto) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = loginSenhaObjeto;
+    // verify the required parameter 'loginSenhaObjeto' is set
+    if (loginSenhaObjeto == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'loginSenhaObjeto' when calling accountIdentificacaoParceiroPost",
+        new ApiException(400, "Missing the required parameter 'loginSenhaObjeto' when calling accountIdentificacaoParceiroPost"));
+    }
 
     // create path and map variables
-    String path = "/perfil/";
+    String path = "/identificacao-parceiro/";
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -76,10 +80,8 @@ public class DevelopersApi {
     Map<String, String> headerParams = new HashMap<String, String>();
     // form params
     Map<String, String> formParams = new HashMap<String, String>();
-    queryParams.addAll(ApiInvoker.parameterToPairs("", "limite", limite));
-    queryParams.addAll(ApiInvoker.parameterToPairs("", "deslocamento", deslocamento));
-    queryParams.addAll(ApiInvoker.parameterToPairs("", "campos", campos));
     String[] contentTypes = {
+      "application/json"
     };
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
 
@@ -95,9 +97,9 @@ public class DevelopersApi {
     String[] authNames = new String[] { "Api-Key" };
 
     try {
-      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return (ListaPerfilUsuario) ApiInvoker.deserialize(localVarResponse, "", ListaPerfilUsuario.class);
+         return (LoginCriado) ApiInvoker.deserialize(localVarResponse, "", LoginCriado.class);
       } else {
          return null;
       }
@@ -119,16 +121,21 @@ public class DevelopersApi {
   }
 
       /**
-   * Retorna uma lista composta por objetos do tipo perfil
-   * Returna uma lista composta por objetos do tipo perfil
-   * @param limite Número máximo de elementos   * @param deslocamento Número de deslocamento (offset) dos elementos   * @param campos Lista de campos para ser inclusivamente filtrados
+   * Cria um login para usuário.
+   * Cria um novo login que será usado para acesso ao sistema.
+   * @param loginSenhaObjeto Dados para criação do login
   */
-  public void perfilGet (BigDecimal limite, BigDecimal deslocamento, String campos, final Response.Listener<ListaPerfilUsuario> responseListener, final Response.ErrorListener errorListener) {
-    Object postBody = null;
+  public void accountIdentificacaoParceiroPost (LoginSenhaObjeto loginSenhaObjeto, final Response.Listener<LoginCriado> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = loginSenhaObjeto;
 
+    // verify the required parameter 'loginSenhaObjeto' is set
+    if (loginSenhaObjeto == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'loginSenhaObjeto' when calling accountIdentificacaoParceiroPost",
+        new ApiException(400, "Missing the required parameter 'loginSenhaObjeto' when calling accountIdentificacaoParceiroPost"));
+    }
 
     // create path and map variables
-    String path = "/perfil/".replaceAll("\\{format\\}","json");
+    String path = "/identificacao-parceiro/".replaceAll("\\{format\\}","json");
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -137,13 +144,10 @@ public class DevelopersApi {
     // form params
     Map<String, String> formParams = new HashMap<String, String>();
 
-    queryParams.addAll(ApiInvoker.parameterToPairs("", "limite", limite));
-    queryParams.addAll(ApiInvoker.parameterToPairs("", "deslocamento", deslocamento));
-    queryParams.addAll(ApiInvoker.parameterToPairs("", "campos", campos));
 
 
     String[] contentTypes = {
-      
+      "application/json"
     };
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
 
@@ -161,12 +165,12 @@ public class DevelopersApi {
     String[] authNames = new String[] { "Api-Key" };
 
     try {
-      apiInvoker.invokeAPI(basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames,
+      apiInvoker.invokeAPI(basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames,
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
             try {
-              responseListener.onResponse((ListaPerfilUsuario) ApiInvoker.deserialize(localVarResponse,  "", ListaPerfilUsuario.class));
+              responseListener.onResponse((LoginCriado) ApiInvoker.deserialize(localVarResponse,  "", LoginCriado.class));
             } catch (ApiException exception) {
                errorListener.onErrorResponse(new VolleyError(exception));
             }

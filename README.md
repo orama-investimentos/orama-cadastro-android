@@ -58,18 +58,18 @@ Please follow the [installation](#installation) instruction and execute the foll
 
 ```java
 
-import org.openapitools.client.api.UsersApi;
+import org.openapitools.client.api.DevelopersApi;
 
-public class UsersApiExample {
+public class DevelopersApiExample {
 
     public static void main(String[] args) {
-        UsersApi apiInstance = new UsersApi();
-        UsuarioSenhaObjeto usuarioSenhaObjeto = new UsuarioSenhaObjeto(); // UsuarioSenhaObjeto | Dados para autenticação do usuário
+        DevelopersApi apiInstance = new DevelopersApi();
+        LoginSenhaObjeto loginSenhaObjeto = new LoginSenhaObjeto(); // LoginSenhaObjeto | Dados para criação do login
         try {
-            AutenticacaoObjeto result = apiInstance.accountAutenticacaoPost(usuarioSenhaObjeto);
+            LoginCriado result = apiInstance.accountIdentificacaoParceiroPost(loginSenhaObjeto);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling UsersApi#accountAutenticacaoPost");
+            System.err.println("Exception when calling DevelopersApi#accountIdentificacaoParceiroPost");
             e.printStackTrace();
         }
     }
@@ -83,6 +83,7 @@ All URIs are relative to *https://cadastro.orama.com.br/api/contas/v1.0*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*DevelopersApi* | [**accountIdentificacaoParceiroPost**](docs/DevelopersApi.md#accountIdentificacaoParceiroPost) | **POST** /identificacao-parceiro/ | Cria um login para usuário.
 *UsersApi* | [**accountAutenticacaoPost**](docs/UsersApi.md#accountAutenticacaoPost) | **POST** /autenticacao/ | Autentica um usuário que ainda não é cliente.
 *UsersApi* | [**accountDocumentoConfirmacaoGet**](docs/UsersApi.md#accountDocumentoConfirmacaoGet) | **GET** /perfil/{cpf}/documento/confirmacao/ | Consulta o status de confirmação do documento que foi submetido
 *UsersApi* | [**accountDocumentoPut**](docs/UsersApi.md#accountDocumentoPut) | **PUT** /perfil/{cpf}/documento/ | Anexa ou atualiza documento para conferencia de autenticidade do perfil.
@@ -113,6 +114,7 @@ Class | Method | HTTP request | Description
  - [DocumentoCorpo](docs/DocumentoCorpo.md)
  - [Endereco](docs/Endereco.md)
  - [Erro](docs/Erro.md)
+ - [FrontEndStep](docs/FrontEndStep.md)
  - [ListaPerfilUsuario](docs/ListaPerfilUsuario.md)
  - [LoginCriado](docs/LoginCriado.md)
  - [LoginObjeto](docs/LoginObjeto.md)
@@ -125,6 +127,13 @@ Class | Method | HTTP request | Description
 ## Documentation for Authorization
 
 Authentication schemes defined for the API:
+### Api-Key
+
+- **Type**: API key
+
+- **API key parameter name**: X-Api-Key
+- **Location**: HTTP header
+
 ### JWT
 
 - **Type**: HTTP basic authentication

@@ -4,17 +4,17 @@ All URIs are relative to *https://cadastro.orama.com.br/api/contas/v1.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**perfilGet**](DevelopersApi.md#perfilGet) | **GET** /perfil/ | Retorna uma lista composta por objetos do tipo perfil
+[**accountIdentificacaoParceiroPost**](DevelopersApi.md#accountIdentificacaoParceiroPost) | **POST** /identificacao-parceiro/ | Cria um login para usuário.
 
 
 
-## perfilGet
+## accountIdentificacaoParceiroPost
 
-> ListaPerfilUsuario perfilGet(limite, deslocamento, campos)
+> LoginCriado accountIdentificacaoParceiroPost(loginSenhaObjeto)
 
-Retorna uma lista composta por objetos do tipo perfil
+Cria um login para usuário.
 
-Returna uma lista composta por objetos do tipo perfil
+Cria um novo login que será usado para acesso ao sistema.
 
 ### Example
 
@@ -23,14 +23,12 @@ Returna uma lista composta por objetos do tipo perfil
 //import org.openapitools.client.api.DevelopersApi;
 
 DevelopersApi apiInstance = new DevelopersApi();
-BigDecimal limite = 1000; // BigDecimal | Número máximo de elementos
-BigDecimal deslocamento = 10; // BigDecimal | Número de deslocamento (offset) dos elementos
-String campos = login,profissao,usPerson; // String | Lista de campos para ser inclusivamente filtrados
+LoginSenhaObjeto loginSenhaObjeto = new LoginSenhaObjeto(); // LoginSenhaObjeto | Dados para criação do login
 try {
-    ListaPerfilUsuario result = apiInstance.perfilGet(limite, deslocamento, campos);
+    LoginCriado result = apiInstance.accountIdentificacaoParceiroPost(loginSenhaObjeto);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling DevelopersApi#perfilGet");
+    System.err.println("Exception when calling DevelopersApi#accountIdentificacaoParceiroPost");
     e.printStackTrace();
 }
 ```
@@ -40,13 +38,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **limite** | **BigDecimal**| Número máximo de elementos | [optional] [default to null]
- **deslocamento** | **BigDecimal**| Número de deslocamento (offset) dos elementos | [optional] [default to null]
- **campos** | **String**| Lista de campos para ser inclusivamente filtrados | [optional] [default to null]
+ **loginSenhaObjeto** | [**LoginSenhaObjeto**](LoginSenhaObjeto.md)| Dados para criação do login |
 
 ### Return type
 
-[**ListaPerfilUsuario**](ListaPerfilUsuario.md)
+[**LoginCriado**](LoginCriado.md)
 
 ### Authorization
 
@@ -54,6 +50,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 

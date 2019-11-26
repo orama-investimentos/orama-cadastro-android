@@ -117,7 +117,7 @@ null (empty response body)
 
 ## accountDocumentoPut
 
-> accountDocumentoPut(cpf, tipoDocumento, name, filename)
+> accountDocumentoPut(cpf, tipoDocumento, filename)
 
 Anexa ou atualiza documento para conferencia de autenticidade do perfil.
 
@@ -132,10 +132,9 @@ Anexa ou atualiza documento que será usado no processo conferencia de autentici
 UsersApi apiInstance = new UsersApi();
 String cpf = null; // String | CPF do perfil
 String tipoDocumento = Passaporte; // String | Tipo do documento
-String name = null; // String | Nome do atributo codificado em form-data 'image'
 File filename = null; // File | Arquivo binário que será enviado. O formato deve ser PDF, PNG ou JPG
 try {
-    apiInstance.accountDocumentoPut(cpf, tipoDocumento, name, filename);
+    apiInstance.accountDocumentoPut(cpf, tipoDocumento, filename);
 } catch (ApiException e) {
     System.err.println("Exception when calling UsersApi#accountDocumentoPut");
     e.printStackTrace();
@@ -149,7 +148,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cpf** | **String**| CPF do perfil | [default to null]
  **tipoDocumento** | **String**| Tipo do documento | [default to null] [enum: Carteira de Habilitação - CNH, Passaporte, Cart. Ident. Estrangeiro - RNE, Cart. Identidade Profissional, Carteira de Identidade / RG, Comprovante Bancário, Comprovante de Residência]
- **name** | **String**| Nome do atributo codificado em form-data &#39;image&#39; | [default to null]
  **filename** | **File**| Arquivo binário que será enviado. O formato deve ser PDF, PNG ou JPG | [default to null]
 
 ### Return type

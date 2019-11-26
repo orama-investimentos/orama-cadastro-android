@@ -101,6 +101,10 @@ public class JsonUtil {
       return new TypeToken<List<Erro>>(){}.getType();
     }
     
+    if ("FrontEndStep".equalsIgnoreCase(className)) {
+      return new TypeToken<List<FrontEndStep>>(){}.getType();
+    }
+    
     if ("ListaPerfilUsuario".equalsIgnoreCase(className)) {
       return new TypeToken<List<ListaPerfilUsuario>>(){}.getType();
     }
@@ -177,6 +181,10 @@ public class JsonUtil {
     
     if ("Erro".equalsIgnoreCase(className)) {
       return new TypeToken<Erro>(){}.getType();
+    }
+    
+    if ("FrontEndStep".equalsIgnoreCase(className)) {
+      return new TypeToken<FrontEndStep>(){}.getType();
     }
     
     if ("ListaPerfilUsuario".equalsIgnoreCase(className)) {

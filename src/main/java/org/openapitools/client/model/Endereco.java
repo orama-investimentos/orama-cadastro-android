@@ -39,7 +39,7 @@ public class Endereco {
   /**
    * Código Postal Brasileiro
    **/
-  @ApiModelProperty(value = "Código Postal Brasileiro")
+  @ApiModelProperty(required = true, value = "Código Postal Brasileiro")
   public String getCep() {
     return cep;
   }
@@ -50,7 +50,7 @@ public class Endereco {
   /**
    * logradouro do endereço
    **/
-  @ApiModelProperty(value = "logradouro do endereço")
+  @ApiModelProperty(required = true, value = "logradouro do endereço")
   public String getLogradouro() {
     return logradouro;
   }
@@ -61,7 +61,7 @@ public class Endereco {
   /**
    * bairro do endereço, preferencialmente lexicográficamente igual a descrição obtida pelo uso do CEP
    **/
-  @ApiModelProperty(value = "bairro do endereço, preferencialmente lexicográficamente igual a descrição obtida pelo uso do CEP")
+  @ApiModelProperty(required = true, value = "bairro do endereço, preferencialmente lexicográficamente igual a descrição obtida pelo uso do CEP")
   public String getBairro() {
     return bairro;
   }
@@ -72,7 +72,7 @@ public class Endereco {
   /**
    * Unidade da Federação do endereço
    **/
-  @ApiModelProperty(value = "Unidade da Federação do endereço")
+  @ApiModelProperty(required = true, value = "Unidade da Federação do endereço")
   public String getUf() {
     return uf;
   }
@@ -83,7 +83,7 @@ public class Endereco {
   /**
    * Município do endereço. Formato é o nome lexicograficamente igual a descrição do IBGE ou o código de cidade completo do IBGE
    **/
-  @ApiModelProperty(value = "Município do endereço. Formato é o nome lexicograficamente igual a descrição do IBGE ou o código de cidade completo do IBGE")
+  @ApiModelProperty(required = true, value = "Município do endereço. Formato é o nome lexicograficamente igual a descrição do IBGE ou o código de cidade completo do IBGE")
   public String getCidade() {
     return cidade;
   }

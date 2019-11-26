@@ -18,6 +18,7 @@ import org.openapitools.client.model.DadosPatrimonial;
 import org.openapitools.client.model.DadosProfissionais;
 import org.openapitools.client.model.Documento;
 import org.openapitools.client.model.Endereco;
+import org.openapitools.client.model.FrontEndStep;
 import org.openapitools.client.model.LoginObjeto;
 import io.swagger.annotations.*;
 import com.google.gson.annotations.SerializedName;
@@ -68,6 +69,8 @@ public class PerfilUsuario {
   private DadosPatrimonial patrimonio = null;
   @SerializedName("contaBancaria")
   private List<ContaBancaria> contaBancaria = null;
+  @SerializedName("frontEnd")
+  private FrontEndStep frontEnd = null;
 
   /**
    * define se o usuário pode ou não ser enquadrado como US person de acordo com a definição da CVM
@@ -250,6 +253,16 @@ public class PerfilUsuario {
     this.contaBancaria = contaBancaria;
   }
 
+  /**
+   **/
+  @ApiModelProperty(value = "")
+  public FrontEndStep getFrontEnd() {
+    return frontEnd;
+  }
+  public void setFrontEnd(FrontEndStep frontEnd) {
+    this.frontEnd = frontEnd;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -276,7 +289,8 @@ public class PerfilUsuario {
         (this.profissao == null ? perfilUsuario.profissao == null : this.profissao.equals(perfilUsuario.profissao)) &&
         (this.endereco == null ? perfilUsuario.endereco == null : this.endereco.equals(perfilUsuario.endereco)) &&
         (this.patrimonio == null ? perfilUsuario.patrimonio == null : this.patrimonio.equals(perfilUsuario.patrimonio)) &&
-        (this.contaBancaria == null ? perfilUsuario.contaBancaria == null : this.contaBancaria.equals(perfilUsuario.contaBancaria));
+        (this.contaBancaria == null ? perfilUsuario.contaBancaria == null : this.contaBancaria.equals(perfilUsuario.contaBancaria)) &&
+        (this.frontEnd == null ? perfilUsuario.frontEnd == null : this.frontEnd.equals(perfilUsuario.frontEnd));
   }
 
   @Override
@@ -299,6 +313,7 @@ public class PerfilUsuario {
     result = 31 * result + (this.endereco == null ? 0: this.endereco.hashCode());
     result = 31 * result + (this.patrimonio == null ? 0: this.patrimonio.hashCode());
     result = 31 * result + (this.contaBancaria == null ? 0: this.contaBancaria.hashCode());
+    result = 31 * result + (this.frontEnd == null ? 0: this.frontEnd.hashCode());
     return result;
   }
 
@@ -324,6 +339,7 @@ public class PerfilUsuario {
     sb.append("  endereco: ").append(endereco).append("\n");
     sb.append("  patrimonio: ").append(patrimonio).append("\n");
     sb.append("  contaBancaria: ").append(contaBancaria).append("\n");
+    sb.append("  frontEnd: ").append(frontEnd).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

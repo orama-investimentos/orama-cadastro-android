@@ -19,7 +19,7 @@ import com.google.gson.annotations.SerializedName;
 public class Aprovacao {
   
   public enum AprovadoEnum {
-     APROVADO,  PENDENTE,  EM ANÁLISE,  INDEFINIDO, 
+     APROVADO,  PENDENTE,  EM ANÁLISE,  INDEFINIDO,  CRIADO,  ERRO, 
   };
   @SerializedName("aprovado")
   private AprovadoEnum aprovado = INDEFINIDO;

@@ -19,21 +19,8 @@ import com.google.gson.annotations.SerializedName;
 @ApiModel(description = "")
 public class DocumentoCorpo {
   
-  @SerializedName("name")
-  private String name = null;
   @SerializedName("filename")
   private File filename = null;
-
-  /**
-   * Nome do atributo codificado em form-data 'image'
-   **/
-  @ApiModelProperty(required = true, value = "Nome do atributo codificado em form-data 'image'")
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
-    this.name = name;
-  }
 
   /**
    * Arquivo binário que será enviado. O formato deve ser PDF, PNG ou JPG
@@ -56,14 +43,12 @@ public class DocumentoCorpo {
       return false;
     }
     DocumentoCorpo documentoCorpo = (DocumentoCorpo) o;
-    return (this.name == null ? documentoCorpo.name == null : this.name.equals(documentoCorpo.name)) &&
-        (this.filename == null ? documentoCorpo.filename == null : this.filename.equals(documentoCorpo.filename));
+    return (this.filename == null ? documentoCorpo.filename == null : this.filename.equals(documentoCorpo.filename));
   }
 
   @Override
   public int hashCode() {
     int result = 17;
-    result = 31 * result + (this.name == null ? 0: this.name.hashCode());
     result = 31 * result + (this.filename == null ? 0: this.filename.hashCode());
     return result;
   }
@@ -73,7 +58,6 @@ public class DocumentoCorpo {
     StringBuilder sb = new StringBuilder();
     sb.append("class DocumentoCorpo {\n");
     
-    sb.append("  name: ").append(name).append("\n");
     sb.append("  filename: ").append(filename).append("\n");
     sb.append("}\n");
     return sb.toString();

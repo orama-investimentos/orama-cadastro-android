@@ -26,6 +26,7 @@ import com.android.volley.VolleyError;
 import org.openapitools.client.model.Aprovacao;
 import org.openapitools.client.model.AutenticacaoObjeto;
 import org.openapitools.client.model.Confirmado;
+import org.openapitools.client.model.Erro;
 import java.io.File;
 import org.openapitools.client.model.LoginCriado;
 import org.openapitools.client.model.LoginSenhaObjeto;
@@ -332,11 +333,10 @@ public class UsersApi {
   * Anexa ou atualiza documento que será usado no processo conferencia de autenticidade do perfil. É recomendado fazer o upload de documentos para comprovação de identidade. Caso o perfil tiver conta bancária conjunta ou a conta seja do banco Itaú é recomendado o upload do documento &#39;Comprovante Bancário&#39;.
    * @param cpf CPF do perfil
    * @param tipoDocumento Tipo do documento
-   * @param name Nome do atributo codificado em form-data &#39;image&#39;
    * @param filename Arquivo binário que será enviado. O formato deve ser PDF, PNG ou JPG
    * @return void
   */
-  public void accountDocumentoPut (String cpf, String tipoDocumento, String name, File filename) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public void accountDocumentoPut (String cpf, String tipoDocumento, File filename) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'cpf' is set
     if (cpf == null) {
@@ -347,11 +347,6 @@ public class UsersApi {
     if (tipoDocumento == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'tipoDocumento' when calling accountDocumentoPut",
         new ApiException(400, "Missing the required parameter 'tipoDocumento' when calling accountDocumentoPut"));
-    }
-    // verify the required parameter 'name' is set
-    if (name == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'name' when calling accountDocumentoPut",
-        new ApiException(400, "Missing the required parameter 'name' when calling accountDocumentoPut"));
     }
     // verify the required parameter 'filename' is set
     if (filename == null) {
@@ -377,9 +372,6 @@ public class UsersApi {
     if (contentType.startsWith("multipart/form-data")) {
       // file uploading
       MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
-      if (name != null) {
-        localVarBuilder.addTextBody("name", ApiInvoker.parameterToString(name), ApiInvoker.TEXT_PLAIN_UTF8);
-      }
       if (filename != null) {
         localVarBuilder.addBinaryBody("filename", filename);
       }
@@ -387,7 +379,6 @@ public class UsersApi {
       postBody = httpEntity;
     } else {
       // normal form params
-      formParams.put("name", ApiInvoker.parameterToString(name));
     }
 
     String[] authNames = new String[] { "JWT" };
@@ -419,9 +410,9 @@ public class UsersApi {
       /**
    * Anexa ou atualiza documento para conferencia de autenticidade do perfil.
    * Anexa ou atualiza documento que será usado no processo conferencia de autenticidade do perfil. É recomendado fazer o upload de documentos para comprovação de identidade. Caso o perfil tiver conta bancária conjunta ou a conta seja do banco Itaú é recomendado o upload do documento &#39;Comprovante Bancário&#39;.
-   * @param cpf CPF do perfil   * @param tipoDocumento Tipo do documento   * @param name Nome do atributo codificado em form-data &#39;image&#39;   * @param filename Arquivo binário que será enviado. O formato deve ser PDF, PNG ou JPG
+   * @param cpf CPF do perfil   * @param tipoDocumento Tipo do documento   * @param filename Arquivo binário que será enviado. O formato deve ser PDF, PNG ou JPG
   */
-  public void accountDocumentoPut (String cpf, String tipoDocumento, String name, File filename, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+  public void accountDocumentoPut (String cpf, String tipoDocumento, File filename, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
     // verify the required parameter 'cpf' is set
@@ -433,11 +424,6 @@ public class UsersApi {
     if (tipoDocumento == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'tipoDocumento' when calling accountDocumentoPut",
         new ApiException(400, "Missing the required parameter 'tipoDocumento' when calling accountDocumentoPut"));
-    }
-    // verify the required parameter 'name' is set
-    if (name == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'name' when calling accountDocumentoPut",
-        new ApiException(400, "Missing the required parameter 'name' when calling accountDocumentoPut"));
     }
     // verify the required parameter 'filename' is set
     if (filename == null) {
@@ -467,10 +453,6 @@ public class UsersApi {
       // file uploading
       MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
       
-      if (name != null) {
-        localVarBuilder.addTextBody("name", ApiInvoker.parameterToString(name), ApiInvoker.TEXT_PLAIN_UTF8);
-      }
-      
       if (filename != null) {
         localVarBuilder.addBinaryBody("filename", filename);
       }
@@ -480,8 +462,7 @@ public class UsersApi {
       postBody = httpEntity;
     } else {
       // normal form params
-      formParams.put("name", ApiInvoker.parameterToString(name));
-
+      
     }
 
     String[] authNames = new String[] { "JWT" };

@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **endereco** | [**Endereco**](Endereco.md) |  | 
 **patrimonio** | [**DadosPatrimonial**](DadosPatrimonial.md) |  |  [optional]
 **contaBancaria** | [**List&lt;ContaBancaria&gt;**](ContaBancaria.md) |  |  [optional]
+**frontEnd** | [**FrontEndStep**](FrontEndStep.md) |  |  [optional]
 
 
 ## Enum: NacionalidadeEnum

@@ -12,6 +12,7 @@
 
 package org.openapitools.client.model;
 
+import org.openapitools.client.model.LoginObjeto;
 import io.swagger.annotations.*;
 import com.google.gson.annotations.SerializedName;
 
@@ -20,6 +21,8 @@ public class AutenticacaoObjeto {
   
   @SerializedName("token")
   private String token = null;
+  @SerializedName("login")
+  private LoginObjeto login = null;
 
   /**
    **/
@@ -29,6 +32,16 @@ public class AutenticacaoObjeto {
   }
   public void setToken(String token) {
     this.token = token;
+  }
+
+  /**
+   **/
+  @ApiModelProperty(value = "")
+  public LoginObjeto getLogin() {
+    return login;
+  }
+  public void setLogin(LoginObjeto login) {
+    this.login = login;
   }
 
 
@@ -41,13 +54,15 @@ public class AutenticacaoObjeto {
       return false;
     }
     AutenticacaoObjeto autenticacaoObjeto = (AutenticacaoObjeto) o;
-    return (this.token == null ? autenticacaoObjeto.token == null : this.token.equals(autenticacaoObjeto.token));
+    return (this.token == null ? autenticacaoObjeto.token == null : this.token.equals(autenticacaoObjeto.token)) &&
+        (this.login == null ? autenticacaoObjeto.login == null : this.login.equals(autenticacaoObjeto.login));
   }
 
   @Override
   public int hashCode() {
     int result = 17;
     result = 31 * result + (this.token == null ? 0: this.token.hashCode());
+    result = 31 * result + (this.login == null ? 0: this.login.hashCode());
     return result;
   }
 
@@ -57,6 +72,7 @@ public class AutenticacaoObjeto {
     sb.append("class AutenticacaoObjeto {\n");
     
     sb.append("  token: ").append(token).append("\n");
+    sb.append("  login: ").append(login).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

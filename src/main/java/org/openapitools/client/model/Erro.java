@@ -21,6 +21,19 @@ import com.google.gson.annotations.SerializedName;
 @ApiModel(description = "Mensagem de erro detalhada")
 public class Erro {
   
+  @SerializedName("mensagem")
+  private Object mensagem = null;
+
+  /**
+   * Conteúdo da mensagem de erro.
+   **/
+  @ApiModelProperty(value = "Conteúdo da mensagem de erro.")
+  public Object getMensagem() {
+    return mensagem;
+  }
+  public void setMensagem(Object mensagem) {
+    this.mensagem = mensagem;
+  }
 
 
   @Override
@@ -32,12 +45,13 @@ public class Erro {
       return false;
     }
     Erro erro = (Erro) o;
-    return true;
+    return (this.mensagem == null ? erro.mensagem == null : this.mensagem.equals(erro.mensagem));
   }
 
   @Override
   public int hashCode() {
     int result = 17;
+    result = 31 * result + (this.mensagem == null ? 0: this.mensagem.hashCode());
     return result;
   }
 
@@ -46,6 +60,7 @@ public class Erro {
     StringBuilder sb = new StringBuilder();
     sb.append("class Erro {\n");
     
+    sb.append("  mensagem: ").append(mensagem).append("\n");
     sb.append("}\n");
     return sb.toString();
   }
