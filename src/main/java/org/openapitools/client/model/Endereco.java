@@ -27,8 +27,11 @@ public class Endereco {
   private String logradouro = null;
   @SerializedName("bairro")
   private String bairro = null;
+  public enum UfEnum {
+     AC,  AL,  AM,  AP,  BA,  CE,  DF,  ES,  GO,  MA,  MG,  MS,  MT,  PA,  PB,  PE,  PI,  PR,  RJ,  RN,  RO,  RR,  RS,  SC,  SE,  SP,  TO, 
+  };
   @SerializedName("uf")
-  private String uf = null;
+  private UfEnum uf = null;
   @SerializedName("cidade")
   private String cidade = null;
   @SerializedName("numero")
@@ -73,10 +76,10 @@ public class Endereco {
    * Unidade da Federação do endereço
    **/
   @ApiModelProperty(required = true, value = "Unidade da Federação do endereço")
-  public String getUf() {
+  public UfEnum getUf() {
     return uf;
   }
-  public void setUf(String uf) {
+  public void setUf(UfEnum uf) {
     this.uf = uf;
   }
 

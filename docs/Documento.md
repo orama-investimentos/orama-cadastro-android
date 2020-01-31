@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **tipoDocumento** | [**TipoDocumentoEnum**](#TipoDocumentoEnum) |  | 
 **numeroDocumento** | **String** |  | 
-**orgaoExpedidor** | **String** | Orgão expedidor de acordo com o tipo de documento | 
+**orgaoExpedidor** | [**OrgaoExpedidorEnum**](#OrgaoExpedidorEnum) | Orgão expedidor de acordo com o tipo de documento | 
 **ufEmissao** | **String** | Unidade da Federação onde foi emitido o documeto | 
 **dataEmissao** | [**Date**](Date.md) | Data em que o documento foi emitido no formato YYYY-MM-DD (cf. RFC 3339, section 5.8) |  [optional]
 **dataValidade** | [**Date**](Date.md) | Data de validade do documento no formato YYYY-MM-DD (cf. RFC 3339, section 5.8) |  [optional]
@@ -16,6 +16,12 @@ Name | Type | Description | Notes
 
 
 ## Enum: TipoDocumentoEnum
+
+Name | Value
+---- | -----
+
+
+## Enum: OrgaoExpedidorEnum
 
 Name | Value
 ---- | -----

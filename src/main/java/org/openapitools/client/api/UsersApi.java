@@ -24,6 +24,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
 import org.openapitools.client.model.Aprovacao;
+import org.openapitools.client.model.AssinaturaEletronica;
 import org.openapitools.client.model.AutenticacaoObjeto;
 import org.openapitools.client.model.Confirmado;
 import org.openapitools.client.model.Erro;
@@ -728,6 +729,264 @@ public class UsersApi {
             } catch (ApiException exception) {
                errorListener.onErrorResponse(new VolleyError(exception));
             }
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
+    } catch (ApiException ex) {
+      errorListener.onErrorResponse(new VolleyError(ex));
+    }
+  }
+  /**
+  * Verifica se a assinatura eletronica já foi definida.
+  * Verifica se a assinatura eletronica já foi definida.
+   * @param cpf CPF do perfil
+   * @return void
+  */
+  public void accountPerfilAssinaturaEletronicaGet (String cpf) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = null;
+    // verify the required parameter 'cpf' is set
+    if (cpf == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'cpf' when calling accountPerfilAssinaturaEletronicaGet",
+        new ApiException(400, "Missing the required parameter 'cpf' when calling accountPerfilAssinaturaEletronicaGet"));
+    }
+
+    // create path and map variables
+    String path = "/perfil/{cpf}/assinatura-eletronica/".replaceAll("\\{" + "cpf" + "\\}", apiInvoker.escapeString(cpf.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+    String[] contentTypes = {
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+    }
+
+    String[] authNames = new String[] { "Api-Key", "JWT" };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return ;
+      } else {
+         return ;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
+   * Verifica se a assinatura eletronica já foi definida.
+   * Verifica se a assinatura eletronica já foi definida.
+   * @param cpf CPF do perfil
+  */
+  public void accountPerfilAssinaturaEletronicaGet (String cpf, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = null;
+
+    // verify the required parameter 'cpf' is set
+    if (cpf == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'cpf' when calling accountPerfilAssinaturaEletronicaGet",
+        new ApiException(400, "Missing the required parameter 'cpf' when calling accountPerfilAssinaturaEletronicaGet"));
+    }
+
+    // create path and map variables
+    String path = "/perfil/{cpf}/assinatura-eletronica/".replaceAll("\\{format\\}","json").replaceAll("\\{" + "cpf" + "\\}", apiInvoker.escapeString(cpf.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+
+
+
+    String[] contentTypes = {
+      
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      
+
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+          }
+
+    String[] authNames = new String[] { "Api-Key", "JWT" };
+
+    try {
+      apiInvoker.invokeAPI(basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+              responseListener.onResponse(localVarResponse);
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
+    } catch (ApiException ex) {
+      errorListener.onErrorResponse(new VolleyError(ex));
+    }
+  }
+  /**
+  * Realiza o cadastro da assinatura eletrônica do perfil.
+  * Cadastra a assinatura eletrônica do perfil, realiza validação da assinatura eletronica. A assinatura eletrônica deve: TODO adicionar as regras de vlidação.
+   * @param cpf CPF do perfil
+   * @param assinaturaEletronica Dados para criação da assinatura eletrônica
+   * @return void
+  */
+  public void accountPerfilAssinaturaEletronicaPost (String cpf, AssinaturaEletronica assinaturaEletronica) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = assinaturaEletronica;
+    // verify the required parameter 'cpf' is set
+    if (cpf == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'cpf' when calling accountPerfilAssinaturaEletronicaPost",
+        new ApiException(400, "Missing the required parameter 'cpf' when calling accountPerfilAssinaturaEletronicaPost"));
+    }
+    // verify the required parameter 'assinaturaEletronica' is set
+    if (assinaturaEletronica == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'assinaturaEletronica' when calling accountPerfilAssinaturaEletronicaPost",
+        new ApiException(400, "Missing the required parameter 'assinaturaEletronica' when calling accountPerfilAssinaturaEletronicaPost"));
+    }
+
+    // create path and map variables
+    String path = "/perfil/{cpf}/assinatura-eletronica/".replaceAll("\\{" + "cpf" + "\\}", apiInvoker.escapeString(cpf.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+    String[] contentTypes = {
+      "application/json"
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+    }
+
+    String[] authNames = new String[] { "Api-Key", "JWT" };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return ;
+      } else {
+         return ;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
+   * Realiza o cadastro da assinatura eletrônica do perfil.
+   * Cadastra a assinatura eletrônica do perfil, realiza validação da assinatura eletronica. A assinatura eletrônica deve: TODO adicionar as regras de vlidação.
+   * @param cpf CPF do perfil   * @param assinaturaEletronica Dados para criação da assinatura eletrônica
+  */
+  public void accountPerfilAssinaturaEletronicaPost (String cpf, AssinaturaEletronica assinaturaEletronica, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = assinaturaEletronica;
+
+    // verify the required parameter 'cpf' is set
+    if (cpf == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'cpf' when calling accountPerfilAssinaturaEletronicaPost",
+        new ApiException(400, "Missing the required parameter 'cpf' when calling accountPerfilAssinaturaEletronicaPost"));
+    }
+    // verify the required parameter 'assinaturaEletronica' is set
+    if (assinaturaEletronica == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'assinaturaEletronica' when calling accountPerfilAssinaturaEletronicaPost",
+        new ApiException(400, "Missing the required parameter 'assinaturaEletronica' when calling accountPerfilAssinaturaEletronicaPost"));
+    }
+
+    // create path and map variables
+    String path = "/perfil/{cpf}/assinatura-eletronica/".replaceAll("\\{format\\}","json").replaceAll("\\{" + "cpf" + "\\}", apiInvoker.escapeString(cpf.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+
+
+
+    String[] contentTypes = {
+      "application/json"
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      
+
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+          }
+
+    String[] authNames = new String[] { "Api-Key", "JWT" };
+
+    try {
+      apiInvoker.invokeAPI(basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+              responseListener.onResponse(localVarResponse);
           }
       }, new Response.ErrorListener() {
           @Override

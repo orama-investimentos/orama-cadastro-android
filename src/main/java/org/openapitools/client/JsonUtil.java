@@ -61,6 +61,10 @@ public class JsonUtil {
       return new TypeToken<List<Aprovacao>>(){}.getType();
     }
     
+    if ("AssinaturaEletronica".equalsIgnoreCase(className)) {
+      return new TypeToken<List<AssinaturaEletronica>>(){}.getType();
+    }
+    
     if ("AutenticacaoCodigoObjeto".equalsIgnoreCase(className)) {
       return new TypeToken<List<AutenticacaoCodigoObjeto>>(){}.getType();
     }
@@ -141,6 +145,10 @@ public class JsonUtil {
     
     if ("Aprovacao".equalsIgnoreCase(className)) {
       return new TypeToken<Aprovacao>(){}.getType();
+    }
+    
+    if ("AssinaturaEletronica".equalsIgnoreCase(className)) {
+      return new TypeToken<AssinaturaEletronica>(){}.getType();
     }
     
     if ("AutenticacaoCodigoObjeto".equalsIgnoreCase(className)) {

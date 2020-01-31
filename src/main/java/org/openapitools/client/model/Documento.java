@@ -29,8 +29,11 @@ public class Documento {
   private TipoDocumentoEnum tipoDocumento = null;
   @SerializedName("numeroDocumento")
   private String numeroDocumento = null;
+  public enum OrgaoExpedidorEnum {
+     IFP,  DETRAN,  Cons. Reg. de Administração,  Cons. Reg. de Biblioteconomia,  Cons. Reg. de Biologia,  Cons. Reg. de Contabilidade,  Cons. Reg. de Corretor Imóveis,  Cons. Reg. de Economia,  Cons. Reg. de Enfermagem,  Cons. Reg. de Engenharia,  Cons. Reg. de Farmácia,  Cons. Reg. de Fisioterapia,  Cons. Reg. de Fonoaudiologia,  Cons. Reg. de Medicina,  Cons. Reg. de Veterinária,  Cons. Reg. de Nutricionista,  Cons. Reg. de Odontologia,  Cons. Reg. de Psicologia,  Cons. Reg. de Química,  Cons. Reg. de Serv. Social,  Dpto. Polícia Federal,  Ministério da Aeronáutica,  Ministério da Marinha,  Ministério do Exército,  OAB,  Outros Expedidores,  SSP, 
+  };
   @SerializedName("orgaoExpedidor")
-  private String orgaoExpedidor = null;
+  private OrgaoExpedidorEnum orgaoExpedidor = null;
   @SerializedName("ufEmissao")
   private String ufEmissao = null;
   @SerializedName("dataEmissao")
@@ -64,10 +67,10 @@ public class Documento {
    * Orgão expedidor de acordo com o tipo de documento
    **/
   @ApiModelProperty(required = true, value = "Orgão expedidor de acordo com o tipo de documento")
-  public String getOrgaoExpedidor() {
+  public OrgaoExpedidorEnum getOrgaoExpedidor() {
     return orgaoExpedidor;
   }
-  public void setOrgaoExpedidor(String orgaoExpedidor) {
+  public void setOrgaoExpedidor(OrgaoExpedidorEnum orgaoExpedidor) {
     this.orgaoExpedidor = orgaoExpedidor;
   }
 

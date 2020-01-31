@@ -30,13 +30,18 @@ public class PerfilUsuario {
   private Boolean usPerson = false;
   @SerializedName("politicamenteExposto")
   private Boolean politicamenteExposto = false;
+  @SerializedName("investidorQualificado")
+  private Boolean investidorQualificado = false;
   public enum NacionalidadeEnum {
      Brasileiro Nato,  Estrangeiro,  Brasileiro Naturalizado, 
   };
   @SerializedName("nacionalidade")
   private NacionalidadeEnum nacionalidade = null;
+  public enum UfNascimentoEnum {
+     AC,  AL,  AM,  AP,  BA,  CE,  DF,  ES,  GO,  MA,  MG,  MS,  MT,  PA,  PB,  PE,  PI,  PR,  RJ,  RN,  RO,  RR,  RS,  SC,  SE,  SP,  TO, 
+  };
   @SerializedName("ufNascimento")
-  private String ufNascimento = null;
+  private UfNascimentoEnum ufNascimento = null;
   @SerializedName("cidadeNascimento")
   private String cidadeNascimento = null;
   @SerializedName("paisNascimento")
@@ -95,6 +100,17 @@ public class PerfilUsuario {
   }
 
   /**
+   * Define se o usuário é investidor qualifiquado. Investidor Qualificado - PF ou PJ que possuam investimentos financeiros em valor superior a 1 Milhão, Investidor aprovado em exame de qualificação técnica, e atestem por escrito sua condição de investidor qualificado. Investidores Profissionais, etc.
+   **/
+  @ApiModelProperty(value = "Define se o usuário é investidor qualifiquado. Investidor Qualificado - PF ou PJ que possuam investimentos financeiros em valor superior a 1 Milhão, Investidor aprovado em exame de qualificação técnica, e atestem por escrito sua condição de investidor qualificado. Investidores Profissionais, etc.")
+  public Boolean getInvestidorQualificado() {
+    return investidorQualificado;
+  }
+  public void setInvestidorQualificado(Boolean investidorQualificado) {
+    this.investidorQualificado = investidorQualificado;
+  }
+
+  /**
    * Definição de Nacionalidade de acordo com o Art. 12 da CF
    **/
   @ApiModelProperty(value = "Definição de Nacionalidade de acordo com o Art. 12 da CF")
@@ -109,10 +125,10 @@ public class PerfilUsuario {
    * Unidade da Federação em que a pessoa nasceu
    **/
   @ApiModelProperty(value = "Unidade da Federação em que a pessoa nasceu")
-  public String getUfNascimento() {
+  public UfNascimentoEnum getUfNascimento() {
     return ufNascimento;
   }
-  public void setUfNascimento(String ufNascimento) {
+  public void setUfNascimento(UfNascimentoEnum ufNascimento) {
     this.ufNascimento = ufNascimento;
   }
 
@@ -275,6 +291,7 @@ public class PerfilUsuario {
     PerfilUsuario perfilUsuario = (PerfilUsuario) o;
     return (this.usPerson == null ? perfilUsuario.usPerson == null : this.usPerson.equals(perfilUsuario.usPerson)) &&
         (this.politicamenteExposto == null ? perfilUsuario.politicamenteExposto == null : this.politicamenteExposto.equals(perfilUsuario.politicamenteExposto)) &&
+        (this.investidorQualificado == null ? perfilUsuario.investidorQualificado == null : this.investidorQualificado.equals(perfilUsuario.investidorQualificado)) &&
         (this.nacionalidade == null ? perfilUsuario.nacionalidade == null : this.nacionalidade.equals(perfilUsuario.nacionalidade)) &&
         (this.ufNascimento == null ? perfilUsuario.ufNascimento == null : this.ufNascimento.equals(perfilUsuario.ufNascimento)) &&
         (this.cidadeNascimento == null ? perfilUsuario.cidadeNascimento == null : this.cidadeNascimento.equals(perfilUsuario.cidadeNascimento)) &&
@@ -298,6 +315,7 @@ public class PerfilUsuario {
     int result = 17;
     result = 31 * result + (this.usPerson == null ? 0: this.usPerson.hashCode());
     result = 31 * result + (this.politicamenteExposto == null ? 0: this.politicamenteExposto.hashCode());
+    result = 31 * result + (this.investidorQualificado == null ? 0: this.investidorQualificado.hashCode());
     result = 31 * result + (this.nacionalidade == null ? 0: this.nacionalidade.hashCode());
     result = 31 * result + (this.ufNascimento == null ? 0: this.ufNascimento.hashCode());
     result = 31 * result + (this.cidadeNascimento == null ? 0: this.cidadeNascimento.hashCode());
@@ -324,6 +342,7 @@ public class PerfilUsuario {
     
     sb.append("  usPerson: ").append(usPerson).append("\n");
     sb.append("  politicamenteExposto: ").append(politicamenteExposto).append("\n");
+    sb.append("  investidorQualificado: ").append(investidorQualificado).append("\n");
     sb.append("  nacionalidade: ").append(nacionalidade).append("\n");
     sb.append("  ufNascimento: ").append(ufNascimento).append("\n");
     sb.append("  cidadeNascimento: ").append(cidadeNascimento).append("\n");

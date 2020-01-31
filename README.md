@@ -89,6 +89,8 @@ Class | Method | HTTP request | Description
 *UsersApi* | [**accountDocumentoPut**](docs/UsersApi.md#accountDocumentoPut) | **PUT** /perfil/{cpf}/documento/ | Anexa ou atualiza documento para conferencia de autenticidade do perfil.
 *UsersApi* | [**accountIdentificacaoPost**](docs/UsersApi.md#accountIdentificacaoPost) | **POST** /identificacao/ | Cria um login para usuário.
 *UsersApi* | [**accountPerfilAprovacaoGet**](docs/UsersApi.md#accountPerfilAprovacaoGet) | **GET** /perfil/{cpf}/aprovacao/ | Retorna o estado de aprovação de um perfil
+*UsersApi* | [**accountPerfilAssinaturaEletronicaGet**](docs/UsersApi.md#accountPerfilAssinaturaEletronicaGet) | **GET** /perfil/{cpf}/assinatura-eletronica/ | Verifica se a assinatura eletronica já foi definida.
+*UsersApi* | [**accountPerfilAssinaturaEletronicaPost**](docs/UsersApi.md#accountPerfilAssinaturaEletronicaPost) | **POST** /perfil/{cpf}/assinatura-eletronica/ | Realiza o cadastro da assinatura eletrônica do perfil.
 *UsersApi* | [**accountPerfilCelularAutenticacaoConfirmacaoGet**](docs/UsersApi.md#accountPerfilCelularAutenticacaoConfirmacaoGet) | **GET** /perfil/{cpf}/celular/autenticacao/confirmacao/ | Estado atual de confirmação do celular
 *UsersApi* | [**accountPerfilCelularAutenticacaoPost**](docs/UsersApi.md#accountPerfilCelularAutenticacaoPost) | **POST** /perfil/{cpf}/celular/autenticacao/ | Gera um código para iniciar o processo de validação do número do celular
 *UsersApi* | [**accountPerfilCelularConfirmacaoPost**](docs/UsersApi.md#accountPerfilCelularConfirmacaoPost) | **POST** /perfil/{cpf}/celular/autenticacao/confirmacao/ | Confirma o numero de celular, concluindo a validação
@@ -104,6 +106,7 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [Aprovacao](docs/Aprovacao.md)
+ - [AssinaturaEletronica](docs/AssinaturaEletronica.md)
  - [AutenticacaoCodigoObjeto](docs/AutenticacaoCodigoObjeto.md)
  - [AutenticacaoObjeto](docs/AutenticacaoObjeto.md)
  - [Confirmado](docs/Confirmado.md)

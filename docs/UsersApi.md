@@ -9,6 +9,8 @@ Method | HTTP request | Description
 [**accountDocumentoPut**](UsersApi.md#accountDocumentoPut) | **PUT** /perfil/{cpf}/documento/ | Anexa ou atualiza documento para conferencia de autenticidade do perfil.
 [**accountIdentificacaoPost**](UsersApi.md#accountIdentificacaoPost) | **POST** /identificacao/ | Cria um login para usuário.
 [**accountPerfilAprovacaoGet**](UsersApi.md#accountPerfilAprovacaoGet) | **GET** /perfil/{cpf}/aprovacao/ | Retorna o estado de aprovação de um perfil
+[**accountPerfilAssinaturaEletronicaGet**](UsersApi.md#accountPerfilAssinaturaEletronicaGet) | **GET** /perfil/{cpf}/assinatura-eletronica/ | Verifica se a assinatura eletronica já foi definida.
+[**accountPerfilAssinaturaEletronicaPost**](UsersApi.md#accountPerfilAssinaturaEletronicaPost) | **POST** /perfil/{cpf}/assinatura-eletronica/ | Realiza o cadastro da assinatura eletrônica do perfil.
 [**accountPerfilCelularAutenticacaoConfirmacaoGet**](UsersApi.md#accountPerfilCelularAutenticacaoConfirmacaoGet) | **GET** /perfil/{cpf}/celular/autenticacao/confirmacao/ | Estado atual de confirmação do celular
 [**accountPerfilCelularAutenticacaoPost**](UsersApi.md#accountPerfilCelularAutenticacaoPost) | **POST** /perfil/{cpf}/celular/autenticacao/ | Gera um código para iniciar o processo de validação do número do celular
 [**accountPerfilCelularConfirmacaoPost**](UsersApi.md#accountPerfilCelularConfirmacaoPost) | **POST** /perfil/{cpf}/celular/autenticacao/confirmacao/ | Confirma o numero de celular, concluindo a validação
@@ -251,6 +253,98 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## accountPerfilAssinaturaEletronicaGet
+
+> accountPerfilAssinaturaEletronicaGet(cpf)
+
+Verifica se a assinatura eletronica já foi definida.
+
+Verifica se a assinatura eletronica já foi definida.
+
+### Example
+
+```java
+// Import classes:
+//import org.openapitools.client.api.UsersApi;
+
+UsersApi apiInstance = new UsersApi();
+String cpf = null; // String | CPF do perfil
+try {
+    apiInstance.accountPerfilAssinaturaEletronicaGet(cpf);
+} catch (ApiException e) {
+    System.err.println("Exception when calling UsersApi#accountPerfilAssinaturaEletronicaGet");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cpf** | **String**| CPF do perfil | [default to null]
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[Api-Key](../README.md#Api-Key), [JWT](../README.md#JWT)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+## accountPerfilAssinaturaEletronicaPost
+
+> accountPerfilAssinaturaEletronicaPost(cpf, assinaturaEletronica)
+
+Realiza o cadastro da assinatura eletrônica do perfil.
+
+Cadastra a assinatura eletrônica do perfil, realiza validação da assinatura eletronica. A assinatura eletrônica deve: TODO adicionar as regras de vlidação.
+
+### Example
+
+```java
+// Import classes:
+//import org.openapitools.client.api.UsersApi;
+
+UsersApi apiInstance = new UsersApi();
+String cpf = null; // String | CPF do perfil
+AssinaturaEletronica assinaturaEletronica = new AssinaturaEletronica(); // AssinaturaEletronica | Dados para criação da assinatura eletrônica
+try {
+    apiInstance.accountPerfilAssinaturaEletronicaPost(cpf, assinaturaEletronica);
+} catch (ApiException e) {
+    System.err.println("Exception when calling UsersApi#accountPerfilAssinaturaEletronicaPost");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cpf** | **String**| CPF do perfil | [default to null]
+ **assinaturaEletronica** | [**AssinaturaEletronica**](AssinaturaEletronica.md)| Dados para criação da assinatura eletrônica |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[Api-Key](../README.md#Api-Key), [JWT](../README.md#JWT)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
