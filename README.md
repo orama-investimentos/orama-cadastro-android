@@ -79,7 +79,7 @@ public class DevelopersApiExample {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://cadastro.orama.com.br/api/contas/v1.0*
+All URIs are relative to *https://cadastro.orama.com.br/api/contas/v2.0*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -101,6 +101,9 @@ Class | Method | HTTP request | Description
 *UsersApi* | [**accountPerfilPost**](docs/UsersApi.md#accountPerfilPost) | **POST** /perfil/{cpf}/ | Submete o perfil de usuário associado a um login para ser criado como cliente.
 *UsersApi* | [**accountPerfilPut**](docs/UsersApi.md#accountPerfilPut) | **PUT** /perfil/{cpf}/ | Atualiza perfil para criação de conta.
 *UsersApi* | [**accountPerfilSubmetidoGet**](docs/UsersApi.md#accountPerfilSubmetidoGet) | **GET** /perfil/{cpf}/submetido/ | Retorna o estado de submissão de um perfil
+*UsersApi* | [**accountPerfilTermosConfirmacaoGet**](docs/UsersApi.md#accountPerfilTermosConfirmacaoGet) | **GET** /perfil/{cpf}/termos/confirmacao/ | Estado atual de confirmação do aceite de termos
+*UsersApi* | [**accountPerfilTermosConfirmacaoPost**](docs/UsersApi.md#accountPerfilTermosConfirmacaoPost) | **POST** /perfil/{cpf}/termos/confirmacao/ | Confirma o aceite de termos
+*UsersApi* | [**accountPerfilTermosGet**](docs/UsersApi.md#accountPerfilTermosGet) | **GET** /perfil/{cpf}/termos/ | Consulta os termos requeridos para o perfil
 
 
 ## Documentation for Models
@@ -124,6 +127,7 @@ Class | Method | HTTP request | Description
  - [LoginSenhaObjeto](docs/LoginSenhaObjeto.md)
  - [PerfilUsuario](docs/PerfilUsuario.md)
  - [Submetido](docs/Submetido.md)
+ - [Termos](docs/Termos.md)
  - [UsuarioSenhaObjeto](docs/UsuarioSenhaObjeto.md)
 
 

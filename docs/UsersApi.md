@@ -1,6 +1,6 @@
 # UsersApi
 
-All URIs are relative to *https://cadastro.orama.com.br/api/contas/v1.0*
+All URIs are relative to *https://cadastro.orama.com.br/api/contas/v2.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -21,6 +21,9 @@ Method | HTTP request | Description
 [**accountPerfilPost**](UsersApi.md#accountPerfilPost) | **POST** /perfil/{cpf}/ | Submete o perfil de usuário associado a um login para ser criado como cliente.
 [**accountPerfilPut**](UsersApi.md#accountPerfilPut) | **PUT** /perfil/{cpf}/ | Atualiza perfil para criação de conta.
 [**accountPerfilSubmetidoGet**](UsersApi.md#accountPerfilSubmetidoGet) | **GET** /perfil/{cpf}/submetido/ | Retorna o estado de submissão de um perfil
+[**accountPerfilTermosConfirmacaoGet**](UsersApi.md#accountPerfilTermosConfirmacaoGet) | **GET** /perfil/{cpf}/termos/confirmacao/ | Estado atual de confirmação do aceite de termos
+[**accountPerfilTermosConfirmacaoPost**](UsersApi.md#accountPerfilTermosConfirmacaoPost) | **POST** /perfil/{cpf}/termos/confirmacao/ | Confirma o aceite de termos
+[**accountPerfilTermosGet**](UsersApi.md#accountPerfilTermosGet) | **GET** /perfil/{cpf}/termos/ | Consulta os termos requeridos para o perfil
 
 
 
@@ -307,7 +310,7 @@ null (empty response body)
 
 Realiza o cadastro da assinatura eletrônica do perfil.
 
-Cadastra a assinatura eletrônica do perfil, realiza validação da assinatura eletronica. A assinatura eletrônica deve: TODO adicionar as regras de vlidação.
+Cadastra a assinatura eletrônica do perfil, realiza validação da assinatura eletronica.  A assinatura deve respeitar as seguintes condições: - Conter de 6 a 15 dígitos - Conter apenas letras e números - Não deve conter 6 ou mais dígitos sequênciais, ex.: &#39;abcdef&#39;, &#39;123456&#39; - Se a assinatura contém entre 6 e 7 dígitos não deve repetir 3 dígitos seguidos, ex.: &#39;111&#39;, &#39;aaa&#39; - Se a assinatura contém entre 8 e 12 dígitos não deve repetir 4 dígitos seguidos, ex.: &#39;1111&#39;, &#39;aaaa&#39; - Se a assinatura contém entre 13 e 14 dígitos não deve repetir 5 dígitos seguidos, ex.: &#39;11111&#39;, &#39;aaaaa&#39; - Se a assinatura contém 15 dígitos não deve repetir 6 dígitos seguidos, ex.: &#39;111111&#39;, &#39;aaaaaa&#39; - A assinatura não deve conter nenhuma das palavras a seguir:      &#39;select&#39;, &#39;update&#39;, &#39;insert&#39;, &#39;delete&#39;, &#39;drop&#39;, &#39;truncate&#39;, &#39;waitfor&#39;, &#39;delay&#39;, &#39;where&#39;, &#39;from&#39;, &#39;having&#39;, &#39;script&#39;, &#39;applet&#39;, &#39;sha1&#39;
 
 ### Example
 
@@ -666,7 +669,7 @@ Name | Type | Description  | Notes
 
 Submete o perfil de usuário associado a um login para ser criado como cliente.
 
-Submete o perfil de usuário associado a um login para ser criado como cliente. É necessário validar ambos o número do celular e o e-mail para que a submissão seja aceita, veja os endpoints /perfil/{cpf}/celular/autenticacao/ e /perfil/{cpf}/email/autenticacao/. Após submissão deste POST, o perfil não poderá mais ser alterado. Para alterar ou inserir informações no perfil antes de submeter o perfil o método PUT deve ser utilizado.
+Submete o perfil de usuário associado a um login para ser criado como cliente. A assinatura eletrônica é obrigatória para a submissão do usuário, ver endpoint /perfil/{cpf}/assinatura-eletronica/. É necessário validar ambos o número do celular e o e-mail para que a submissão seja aceita, veja os endpoints /perfil/{cpf}/celular/autenticacao/ e /perfil/{cpf}/email/autenticacao/. Após submissão deste POST, o perfil não poderá mais ser alterado. Para alterar ou inserir informações no perfil antes de submeter o perfil o método PUT deve ser utilizado.
 
 ### Example
 
@@ -785,6 +788,140 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Submetido**](Submetido.md)
+
+### Authorization
+
+[JWT](../README.md#JWT)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## accountPerfilTermosConfirmacaoGet
+
+> Confirmado accountPerfilTermosConfirmacaoGet(cpf)
+
+Estado atual de confirmação do aceite de termos
+
+### Example
+
+```java
+// Import classes:
+//import org.openapitools.client.api.UsersApi;
+
+UsersApi apiInstance = new UsersApi();
+String cpf = null; // String | CPF do perfil
+try {
+    Confirmado result = apiInstance.accountPerfilTermosConfirmacaoGet(cpf);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling UsersApi#accountPerfilTermosConfirmacaoGet");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cpf** | **String**| CPF do perfil | [default to null]
+
+### Return type
+
+[**Confirmado**](Confirmado.md)
+
+### Authorization
+
+[JWT](../README.md#JWT)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## accountPerfilTermosConfirmacaoPost
+
+> Confirmado accountPerfilTermosConfirmacaoPost(cpf)
+
+Confirma o aceite de termos
+
+### Example
+
+```java
+// Import classes:
+//import org.openapitools.client.api.UsersApi;
+
+UsersApi apiInstance = new UsersApi();
+String cpf = null; // String | CPF do perfil
+try {
+    Confirmado result = apiInstance.accountPerfilTermosConfirmacaoPost(cpf);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling UsersApi#accountPerfilTermosConfirmacaoPost");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cpf** | **String**| CPF do perfil | [default to null]
+
+### Return type
+
+[**Confirmado**](Confirmado.md)
+
+### Authorization
+
+[JWT](../README.md#JWT)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## accountPerfilTermosGet
+
+> List&lt;Termos&gt; accountPerfilTermosGet(cpf)
+
+Consulta os termos requeridos para o perfil
+
+Consulta os termos exigidos para o perfil
+
+### Example
+
+```java
+// Import classes:
+//import org.openapitools.client.api.UsersApi;
+
+UsersApi apiInstance = new UsersApi();
+String cpf = null; // String | CPF do perfil
+try {
+    List<Termos> result = apiInstance.accountPerfilTermosGet(cpf);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling UsersApi#accountPerfilTermosGet");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cpf** | **String**| CPF do perfil | [default to null]
+
+### Return type
+
+[**List&lt;Termos&gt;**](Termos.md)
 
 ### Authorization
 
