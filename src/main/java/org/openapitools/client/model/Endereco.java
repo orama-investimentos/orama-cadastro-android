@@ -97,7 +97,7 @@ public class Endereco {
   /**
    * Número do logradouro no endereço
    **/
-  @ApiModelProperty(value = "Número do logradouro no endereço")
+  @ApiModelProperty(required = true, value = "Número do logradouro no endereço")
   public String getNumero() {
     return numero;
   }

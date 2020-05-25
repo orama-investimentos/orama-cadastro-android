@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**mensagem** | [**Object**](.md) | Conteúdo da mensagem de erro. |  [optional]
+**mensagem** | **Object** | Conteúdo da mensagem de erro. |  [optional]
 
 
 

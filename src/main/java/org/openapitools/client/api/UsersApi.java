@@ -47,7 +47,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
 
 public class UsersApi {
-  String basePath = "https://cadastro.orama.com.br/api/contas/v2.0";
+  String basePath = "https://cadastro.orama.com.br/api/contas/v3.0";
   ApiInvoker apiInvoker = ApiInvoker.getInstance();
 
   public void addHeader(String key, String value) {
