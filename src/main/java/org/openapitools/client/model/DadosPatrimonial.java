@@ -40,7 +40,7 @@ public class DadosPatrimonial {
   /**
    * Código do valor total em aplicações financeiras considerando outras instituições. Cada número representa um intervalo de valor em reais (R$). Por exemplo, '0': 'Nenhum', '1': 'Até R$50.000,00', '2': 'De R$50.000,01 à R$100.000,00', '3': 'De R$100.000,01 à R$200.000,00', '4': 'De R$200.000,01 à R$300.000,00', '5': 'De R$300.000,01 à R$1.000.000,00', '6': 'Acima de R$1.000.000,00'
    **/
-  @ApiModelProperty(required = true, value = "Código do valor total em aplicações financeiras considerando outras instituições. Cada número representa um intervalo de valor em reais (R$). Por exemplo, '0': 'Nenhum', '1': 'Até R$50.000,00', '2': 'De R$50.000,01 à R$100.000,00', '3': 'De R$100.000,01 à R$200.000,00', '4': 'De R$200.000,01 à R$300.000,00', '5': 'De R$300.000,01 à R$1.000.000,00', '6': 'Acima de R$1.000.000,00'")
+  @ApiModelProperty(value = "Código do valor total em aplicações financeiras considerando outras instituições. Cada número representa um intervalo de valor em reais (R$). Por exemplo, '0': 'Nenhum', '1': 'Até R$50.000,00', '2': 'De R$50.000,01 à R$100.000,00', '3': 'De R$100.000,01 à R$200.000,00', '4': 'De R$200.000,01 à R$300.000,00', '5': 'De R$300.000,01 à R$1.000.000,00', '6': 'Acima de R$1.000.000,00'")
   public FaixaAplicacoesEnum getFaixaAplicacoes() {
     return faixaAplicacoes;
   }
@@ -64,7 +64,7 @@ public class DadosPatrimonial {
   /**
    * Código do valor que representa a renta bruta mensal. Cada número representa um intervalo de valor em reais (R$). Por exemplo, '0': 'Nenhum', '1': 'Até R$5.000,00', '2': 'De R$5.000,01 à R$10.000,00', '3': 'De R$10.000,01 à R$20.000,00', '4': 'De R$20.000,01 à R$30.000,00', '5': 'De R$30.000,01 à R$100.000,00', '6': 'Acima de R$100.000,00'
    **/
-  @ApiModelProperty(required = true, value = "Código do valor que representa a renta bruta mensal. Cada número representa um intervalo de valor em reais (R$). Por exemplo, '0': 'Nenhum', '1': 'Até R$5.000,00', '2': 'De R$5.000,01 à R$10.000,00', '3': 'De R$10.000,01 à R$20.000,00', '4': 'De R$20.000,01 à R$30.000,00', '5': 'De R$30.000,01 à R$100.000,00', '6': 'Acima de R$100.000,00'")
+  @ApiModelProperty(value = "Código do valor que representa a renta bruta mensal. Cada número representa um intervalo de valor em reais (R$). Por exemplo, '0': 'Nenhum', '1': 'Até R$5.000,00', '2': 'De R$5.000,01 à R$10.000,00', '3': 'De R$10.000,01 à R$20.000,00', '4': 'De R$20.000,01 à R$30.000,00', '5': 'De R$30.000,01 à R$100.000,00', '6': 'Acima de R$100.000,00'")
   public FaixaRendimentosEnum getFaixaRendimentos() {
     return faixaRendimentos;
   }
@@ -73,11 +73,11 @@ public class DadosPatrimonial {
   }
 
   /**
-   * Valor total em R$ incluindo móveis, imóveis e outros bens do usuário  - Obrigatório caso 'faixaAplicacoes' e 'faixaRendimentos' seja '0 - Nenhum'
-   * minimum: 1000.0
+   * Valor total em R$ incluindo móveis, imóveis e outros bens do usuário
+   * minimum: 0.1
    * maximum: 999999999999.99
    **/
-  @ApiModelProperty(value = "Valor total em R$ incluindo móveis, imóveis e outros bens do usuário  - Obrigatório caso 'faixaAplicacoes' e 'faixaRendimentos' seja '0 - Nenhum'")
+  @ApiModelProperty(value = "Valor total em R$ incluindo móveis, imóveis e outros bens do usuário")
   public BigDecimal getValorOutrosBens() {
     return valorOutrosBens;
   }

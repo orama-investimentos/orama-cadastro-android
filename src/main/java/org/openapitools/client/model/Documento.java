@@ -88,7 +88,7 @@ public class Documento {
   /**
    * Data em que o documento foi emitido no formato YYYY-MM-DD (cf. RFC 3339, section 5.8)
    **/
-  @ApiModelProperty(required = true, value = "Data em que o documento foi emitido no formato YYYY-MM-DD (cf. RFC 3339, section 5.8)")
+  @ApiModelProperty(value = "Data em que o documento foi emitido no formato YYYY-MM-DD (cf. RFC 3339, section 5.8)")
   public Date getDataEmissao() {
     return dataEmissao;
   }
@@ -108,9 +108,9 @@ public class Documento {
   }
 
   /**
-   * Código de Segurança da Carteira Nacional de Habilitação  - Obrigatório caso 'tipoDocumento' seja 'Carteira de Habilitação - CNH'
+   * Código de Segurança da Carteira Nacional de Habilitação
    **/
-  @ApiModelProperty(value = "Código de Segurança da Carteira Nacional de Habilitação  - Obrigatório caso 'tipoDocumento' seja 'Carteira de Habilitação - CNH'")
+  @ApiModelProperty(value = "Código de Segurança da Carteira Nacional de Habilitação")
   public String getCodigoSegurancaCNH() {
     return codigoSegurancaCNH;
   }

@@ -125,6 +125,10 @@ public class JsonUtil {
       return new TypeToken<List<LoginSenhaObjeto>>(){}.getType();
     }
     
+    if ("Pendencia".equalsIgnoreCase(className)) {
+      return new TypeToken<List<Pendencia>>(){}.getType();
+    }
+    
     if ("PerfilUsuario".equalsIgnoreCase(className)) {
       return new TypeToken<List<PerfilUsuario>>(){}.getType();
     }
@@ -213,6 +217,10 @@ public class JsonUtil {
     
     if ("LoginSenhaObjeto".equalsIgnoreCase(className)) {
       return new TypeToken<LoginSenhaObjeto>(){}.getType();
+    }
+    
+    if ("Pendencia".equalsIgnoreCase(className)) {
+      return new TypeToken<Pendencia>(){}.getType();
     }
     
     if ("PerfilUsuario".equalsIgnoreCase(className)) {

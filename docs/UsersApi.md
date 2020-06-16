@@ -1,6 +1,6 @@
 # UsersApi
 
-All URIs are relative to *https://cadastro.orama.com.br/api/contas/v3.0*
+All URIs are relative to *https://cadastro.orama.com.br/api/contas/v2.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -18,6 +18,8 @@ Method | HTTP request | Description
 [**accountPerfilEmailAutenticacaoPost**](UsersApi.md#accountPerfilEmailAutenticacaoPost) | **POST** /perfil/{cpf}/email/autenticacao/ | Gera um código para iniciar o processo de validação do email
 [**accountPerfilEmailConfirmacaoPost**](UsersApi.md#accountPerfilEmailConfirmacaoPost) | **POST** /perfil/{cpf}/email/autenticacao/confirmacao/ | Confirma o email, concluindo a validação
 [**accountPerfilGet**](UsersApi.md#accountPerfilGet) | **GET** /perfil/{cpf}/ | Retorna o perfil de um usuário que ainda não foi transformado em cliente.
+[**accountPerfilPendenciaGet**](UsersApi.md#accountPerfilPendenciaGet) | **GET** /perfil/{cpf}/pendencia/ | Retorna lista de pendências do perfil caso existam
+[**accountPerfilPendenciaSolicitaranalisePost**](UsersApi.md#accountPerfilPendenciaSolicitaranalisePost) | **POST** /perfil/{cpf}/pendencia/solicitar-analise/ | Solicita a análise das pendências. Este endpoint deve ser utilizado após o upload dos documentos relacionados as pendências.
 [**accountPerfilPost**](UsersApi.md#accountPerfilPost) | **POST** /perfil/{cpf}/ | Submete o perfil de usuário associado a um login para ser criado como cliente.
 [**accountPerfilPut**](UsersApi.md#accountPerfilPut) | **PUT** /perfil/{cpf}/ | Atualiza perfil para criação de conta.
 [**accountPerfilSubmetidoGet**](UsersApi.md#accountPerfilSubmetidoGet) | **GET** /perfil/{cpf}/submetido/ | Retorna o estado de submissão de um perfil
@@ -656,6 +658,93 @@ Name | Type | Description  | Notes
 ### Authorization
 
 [JWT](../README.md#JWT)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## accountPerfilPendenciaGet
+
+> List&lt;Pendencia&gt; accountPerfilPendenciaGet(cpf)
+
+Retorna lista de pendências do perfil caso existam
+
+### Example
+
+```java
+// Import classes:
+//import org.openapitools.client.api.UsersApi;
+
+UsersApi apiInstance = new UsersApi();
+String cpf = null; // String | CPF do perfil
+try {
+    List<Pendencia> result = apiInstance.accountPerfilPendenciaGet(cpf);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling UsersApi#accountPerfilPendenciaGet");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cpf** | **String**| CPF do perfil | [default to null]
+
+### Return type
+
+[**List&lt;Pendencia&gt;**](Pendencia.md)
+
+### Authorization
+
+[Api-Key](../README.md#Api-Key), [JWT](../README.md#JWT)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## accountPerfilPendenciaSolicitaranalisePost
+
+> accountPerfilPendenciaSolicitaranalisePost(cpf)
+
+Solicita a análise das pendências. Este endpoint deve ser utilizado após o upload dos documentos relacionados as pendências.
+
+### Example
+
+```java
+// Import classes:
+//import org.openapitools.client.api.UsersApi;
+
+UsersApi apiInstance = new UsersApi();
+String cpf = null; // String | CPF do perfil
+try {
+    apiInstance.accountPerfilPendenciaSolicitaranalisePost(cpf);
+} catch (ApiException e) {
+    System.err.println("Exception when calling UsersApi#accountPerfilPendenciaSolicitaranalisePost");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cpf** | **String**| CPF do perfil | [default to null]
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[Api-Key](../README.md#Api-Key), [JWT](../README.md#JWT)
 
 ### HTTP request headers
 

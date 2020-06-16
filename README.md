@@ -79,7 +79,7 @@ public class DevelopersApiExample {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://cadastro.orama.com.br/api/contas/v3.0*
+All URIs are relative to *https://cadastro.orama.com.br/api/contas/v2.0*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -98,6 +98,8 @@ Class | Method | HTTP request | Description
 *UsersApi* | [**accountPerfilEmailAutenticacaoPost**](docs/UsersApi.md#accountPerfilEmailAutenticacaoPost) | **POST** /perfil/{cpf}/email/autenticacao/ | Gera um código para iniciar o processo de validação do email
 *UsersApi* | [**accountPerfilEmailConfirmacaoPost**](docs/UsersApi.md#accountPerfilEmailConfirmacaoPost) | **POST** /perfil/{cpf}/email/autenticacao/confirmacao/ | Confirma o email, concluindo a validação
 *UsersApi* | [**accountPerfilGet**](docs/UsersApi.md#accountPerfilGet) | **GET** /perfil/{cpf}/ | Retorna o perfil de um usuário que ainda não foi transformado em cliente.
+*UsersApi* | [**accountPerfilPendenciaGet**](docs/UsersApi.md#accountPerfilPendenciaGet) | **GET** /perfil/{cpf}/pendencia/ | Retorna lista de pendências do perfil caso existam
+*UsersApi* | [**accountPerfilPendenciaSolicitaranalisePost**](docs/UsersApi.md#accountPerfilPendenciaSolicitaranalisePost) | **POST** /perfil/{cpf}/pendencia/solicitar-analise/ | Solicita a análise das pendências. Este endpoint deve ser utilizado após o upload dos documentos relacionados as pendências.
 *UsersApi* | [**accountPerfilPost**](docs/UsersApi.md#accountPerfilPost) | **POST** /perfil/{cpf}/ | Submete o perfil de usuário associado a um login para ser criado como cliente.
 *UsersApi* | [**accountPerfilPut**](docs/UsersApi.md#accountPerfilPut) | **PUT** /perfil/{cpf}/ | Atualiza perfil para criação de conta.
 *UsersApi* | [**accountPerfilSubmetidoGet**](docs/UsersApi.md#accountPerfilSubmetidoGet) | **GET** /perfil/{cpf}/submetido/ | Retorna o estado de submissão de um perfil
@@ -125,6 +127,7 @@ Class | Method | HTTP request | Description
  - [LoginCriado](docs/LoginCriado.md)
  - [LoginObjeto](docs/LoginObjeto.md)
  - [LoginSenhaObjeto](docs/LoginSenhaObjeto.md)
+ - [Pendencia](docs/Pendencia.md)
  - [PerfilUsuario](docs/PerfilUsuario.md)
  - [Submetido](docs/Submetido.md)
  - [Termos](docs/Termos.md)

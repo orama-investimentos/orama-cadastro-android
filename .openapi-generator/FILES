@@ -19,6 +19,7 @@ docs/ListaPerfilUsuario.md
 docs/LoginCriado.md
 docs/LoginObjeto.md
 docs/LoginSenhaObjeto.md
+docs/Pendencia.md
 docs/PerfilUsuario.md
 docs/Submetido.md
 docs/Termos.md
@@ -57,6 +58,7 @@ src/main/java/org/openapitools/client/model/ListaPerfilUsuario.java
 src/main/java/org/openapitools/client/model/LoginCriado.java
 src/main/java/org/openapitools/client/model/LoginObjeto.java
 src/main/java/org/openapitools/client/model/LoginSenhaObjeto.java
+src/main/java/org/openapitools/client/model/Pendencia.java
 src/main/java/org/openapitools/client/model/PerfilUsuario.java
 src/main/java/org/openapitools/client/model/Submetido.java
 src/main/java/org/openapitools/client/model/Termos.java

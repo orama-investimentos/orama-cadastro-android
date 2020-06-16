@@ -25,13 +25,11 @@ public class DadosProfissionais {
   private String profissao = null;
   @SerializedName("empresa")
   private String empresa = null;
-  @SerializedName("empregado")
-  private Boolean empregado = true;
 
   /**
    * Profissão de acordo com a tabela de ocupação profissional
    **/
-  @ApiModelProperty(required = true, value = "Profissão de acordo com a tabela de ocupação profissional")
+  @ApiModelProperty(value = "Profissão de acordo com a tabela de ocupação profissional")
   public String getProfissao() {
     return profissao;
   }
@@ -40,25 +38,14 @@ public class DadosProfissionais {
   }
 
   /**
-   * Nome da empresa em que trabalha o usuário.  - É obrigatório caso o usuário esteja empregado.
+   * Nome da empresa em que trabalha o usuário
    **/
-  @ApiModelProperty(value = "Nome da empresa em que trabalha o usuário.  - É obrigatório caso o usuário esteja empregado.")
+  @ApiModelProperty(value = "Nome da empresa em que trabalha o usuário")
   public String getEmpresa() {
     return empresa;
   }
   public void setEmpresa(String empresa) {
     this.empresa = empresa;
-  }
-
-  /**
-   * Se o usuário esta empregado no momento.
-   **/
-  @ApiModelProperty(required = true, value = "Se o usuário esta empregado no momento.")
-  public Boolean getEmpregado() {
-    return empregado;
-  }
-  public void setEmpregado(Boolean empregado) {
-    this.empregado = empregado;
   }
 
 
@@ -72,8 +59,7 @@ public class DadosProfissionais {
     }
     DadosProfissionais dadosProfissionais = (DadosProfissionais) o;
     return (this.profissao == null ? dadosProfissionais.profissao == null : this.profissao.equals(dadosProfissionais.profissao)) &&
-        (this.empresa == null ? dadosProfissionais.empresa == null : this.empresa.equals(dadosProfissionais.empresa)) &&
-        (this.empregado == null ? dadosProfissionais.empregado == null : this.empregado.equals(dadosProfissionais.empregado));
+        (this.empresa == null ? dadosProfissionais.empresa == null : this.empresa.equals(dadosProfissionais.empresa));
   }
 
   @Override
@@ -81,7 +67,6 @@ public class DadosProfissionais {
     int result = 17;
     result = 31 * result + (this.profissao == null ? 0: this.profissao.hashCode());
     result = 31 * result + (this.empresa == null ? 0: this.empresa.hashCode());
-    result = 31 * result + (this.empregado == null ? 0: this.empregado.hashCode());
     return result;
   }
 
@@ -92,7 +77,6 @@ public class DadosProfissionais {
     
     sb.append("  profissao: ").append(profissao).append("\n");
     sb.append("  empresa: ").append(empresa).append("\n");
-    sb.append("  empregado: ").append(empregado).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

@@ -62,8 +62,6 @@ public class PerfilUsuario {
   private String nomeMae = null;
   @SerializedName("nomePai")
   private String nomePai = null;
-  @SerializedName("paiDesconhecido")
-  private Boolean paiDesconhecido = false;
   @SerializedName("login")
   private LoginObjeto login = null;
   @SerializedName("documento")
@@ -82,7 +80,7 @@ public class PerfilUsuario {
   /**
    * define se o usuário pode ou não ser enquadrado como US person de acordo com a definição da CVM
    **/
-  @ApiModelProperty(required = true, value = "define se o usuário pode ou não ser enquadrado como US person de acordo com a definição da CVM")
+  @ApiModelProperty(value = "define se o usuário pode ou não ser enquadrado como US person de acordo com a definição da CVM")
   public Boolean getUsPerson() {
     return usPerson;
   }
@@ -93,7 +91,7 @@ public class PerfilUsuario {
   /**
    * define se o usuário pode ou não ser enquadrado como pessoa politicamente exposta de acordo com a definição da Deliberação Coremec nº 2, de 1º de dezembro de 2006
    **/
-  @ApiModelProperty(required = true, value = "define se o usuário pode ou não ser enquadrado como pessoa politicamente exposta de acordo com a definição da Deliberação Coremec nº 2, de 1º de dezembro de 2006")
+  @ApiModelProperty(value = "define se o usuário pode ou não ser enquadrado como pessoa politicamente exposta de acordo com a definição da Deliberação Coremec nº 2, de 1º de dezembro de 2006")
   public Boolean getPoliticamenteExposto() {
     return politicamenteExposto;
   }
@@ -104,7 +102,7 @@ public class PerfilUsuario {
   /**
    * Define se o usuário é investidor qualifiquado. Investidor Qualificado - PF ou PJ que possuam investimentos financeiros em valor superior a 1 Milhão, Investidor aprovado em exame de qualificação técnica, e atestem por escrito sua condição de investidor qualificado. Investidores Profissionais, etc.
    **/
-  @ApiModelProperty(required = true, value = "Define se o usuário é investidor qualifiquado. Investidor Qualificado - PF ou PJ que possuam investimentos financeiros em valor superior a 1 Milhão, Investidor aprovado em exame de qualificação técnica, e atestem por escrito sua condição de investidor qualificado. Investidores Profissionais, etc.")
+  @ApiModelProperty(value = "Define se o usuário é investidor qualifiquado. Investidor Qualificado - PF ou PJ que possuam investimentos financeiros em valor superior a 1 Milhão, Investidor aprovado em exame de qualificação técnica, e atestem por escrito sua condição de investidor qualificado. Investidores Profissionais, etc.")
   public Boolean getInvestidorQualificado() {
     return investidorQualificado;
   }
@@ -115,7 +113,7 @@ public class PerfilUsuario {
   /**
    * Definição de Nacionalidade de acordo com o Art. 12 da CF
    **/
-  @ApiModelProperty(required = true, value = "Definição de Nacionalidade de acordo com o Art. 12 da CF")
+  @ApiModelProperty(value = "Definição de Nacionalidade de acordo com o Art. 12 da CF")
   public NacionalidadeEnum getNacionalidade() {
     return nacionalidade;
   }
@@ -124,9 +122,9 @@ public class PerfilUsuario {
   }
 
   /**
-   * Unidade da Federação em que a pessoa nasceu  - É obrigatório caso 'nacinalidade' seja 'Brasileiro nato'
+   * Unidade da Federação em que a pessoa nasceu
    **/
-  @ApiModelProperty(value = "Unidade da Federação em que a pessoa nasceu  - É obrigatório caso 'nacinalidade' seja 'Brasileiro nato'")
+  @ApiModelProperty(value = "Unidade da Federação em que a pessoa nasceu")
   public UfNascimentoEnum getUfNascimento() {
     return ufNascimento;
   }
@@ -135,9 +133,9 @@ public class PerfilUsuario {
   }
 
   /**
-   * Município em que a pessoa nascida no Brasil nasceu. Formato é o nome lexicograficamente igual a descrição do IBGE ou o código de cidade completo do IBGE  - É obrigatório caso 'nacinalidade' seja 'Brasileiro nato'
+   * Município em que a pessoa nascida no Brasil nasceu. Formato é o nome lexicograficamente igual a descrição do IBGE ou o código de cidade completo do IBGE
    **/
-  @ApiModelProperty(value = "Município em que a pessoa nascida no Brasil nasceu. Formato é o nome lexicograficamente igual a descrição do IBGE ou o código de cidade completo do IBGE  - É obrigatório caso 'nacinalidade' seja 'Brasileiro nato'")
+  @ApiModelProperty(value = "Município em que a pessoa nascida no Brasil nasceu. Formato é o nome lexicograficamente igual a descrição do IBGE ou o código de cidade completo do IBGE")
   public String getCidadeNascimento() {
     return cidadeNascimento;
   }
@@ -148,7 +146,7 @@ public class PerfilUsuario {
   /**
    * País em que a pessoa nasceu. Código ISO 3166-1 alpha-2
    **/
-  @ApiModelProperty(required = true, value = "País em que a pessoa nasceu. Código ISO 3166-1 alpha-2")
+  @ApiModelProperty(value = "País em que a pessoa nasceu. Código ISO 3166-1 alpha-2")
   public String getPaisNascimento() {
     return paisNascimento;
   }
@@ -159,7 +157,7 @@ public class PerfilUsuario {
   /**
    * Sexo do indivíduo
    **/
-  @ApiModelProperty(required = true, value = "Sexo do indivíduo")
+  @ApiModelProperty(value = "Sexo do indivíduo")
   public SexoEnum getSexo() {
     return sexo;
   }
@@ -170,7 +168,7 @@ public class PerfilUsuario {
   /**
    * Estado civil do usuário
    **/
-  @ApiModelProperty(required = true, value = "Estado civil do usuário")
+  @ApiModelProperty(value = "Estado civil do usuário")
   public EstadoCivilEnum getEstadoCivil() {
     return estadoCivil;
   }
@@ -201,9 +199,9 @@ public class PerfilUsuario {
   }
 
   /**
-   * Nome do pai do usuário.   - É obrigatório caso o usuário não possua pai desconhecido.
+   * Nome do pai do usuário. O nome deve ser string vazia ou null caso o pai seja desconhecido.
    **/
-  @ApiModelProperty(value = "Nome do pai do usuário.   - É obrigatório caso o usuário não possua pai desconhecido.")
+  @ApiModelProperty(value = "Nome do pai do usuário. O nome deve ser string vazia ou null caso o pai seja desconhecido.")
   public String getNomePai() {
     return nomePai;
   }
@@ -212,19 +210,8 @@ public class PerfilUsuario {
   }
 
   /**
-   * Se o usuário não possui Nome do Pai nos documentos.
    **/
-  @ApiModelProperty(required = true, value = "Se o usuário não possui Nome do Pai nos documentos.")
-  public Boolean getPaiDesconhecido() {
-    return paiDesconhecido;
-  }
-  public void setPaiDesconhecido(Boolean paiDesconhecido) {
-    this.paiDesconhecido = paiDesconhecido;
-  }
-
-  /**
-   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
   public LoginObjeto getLogin() {
     return login;
   }
@@ -244,7 +231,7 @@ public class PerfilUsuario {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
   public DadosProfissionais getProfissao() {
     return profissao;
   }
@@ -264,7 +251,7 @@ public class PerfilUsuario {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
   public DadosPatrimonial getPatrimonio() {
     return patrimonio;
   }
@@ -274,7 +261,7 @@ public class PerfilUsuario {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
   public List<ContaBancaria> getContaBancaria() {
     return contaBancaria;
   }
@@ -314,7 +301,6 @@ public class PerfilUsuario {
         (this.nomeConjuge == null ? perfilUsuario.nomeConjuge == null : this.nomeConjuge.equals(perfilUsuario.nomeConjuge)) &&
         (this.nomeMae == null ? perfilUsuario.nomeMae == null : this.nomeMae.equals(perfilUsuario.nomeMae)) &&
         (this.nomePai == null ? perfilUsuario.nomePai == null : this.nomePai.equals(perfilUsuario.nomePai)) &&
-        (this.paiDesconhecido == null ? perfilUsuario.paiDesconhecido == null : this.paiDesconhecido.equals(perfilUsuario.paiDesconhecido)) &&
         (this.login == null ? perfilUsuario.login == null : this.login.equals(perfilUsuario.login)) &&
         (this.documento == null ? perfilUsuario.documento == null : this.documento.equals(perfilUsuario.documento)) &&
         (this.profissao == null ? perfilUsuario.profissao == null : this.profissao.equals(perfilUsuario.profissao)) &&
@@ -339,7 +325,6 @@ public class PerfilUsuario {
     result = 31 * result + (this.nomeConjuge == null ? 0: this.nomeConjuge.hashCode());
     result = 31 * result + (this.nomeMae == null ? 0: this.nomeMae.hashCode());
     result = 31 * result + (this.nomePai == null ? 0: this.nomePai.hashCode());
-    result = 31 * result + (this.paiDesconhecido == null ? 0: this.paiDesconhecido.hashCode());
     result = 31 * result + (this.login == null ? 0: this.login.hashCode());
     result = 31 * result + (this.documento == null ? 0: this.documento.hashCode());
     result = 31 * result + (this.profissao == null ? 0: this.profissao.hashCode());
@@ -367,7 +352,6 @@ public class PerfilUsuario {
     sb.append("  nomeConjuge: ").append(nomeConjuge).append("\n");
     sb.append("  nomeMae: ").append(nomeMae).append("\n");
     sb.append("  nomePai: ").append(nomePai).append("\n");
-    sb.append("  paiDesconhecido: ").append(paiDesconhecido).append("\n");
     sb.append("  login: ").append(login).append("\n");
     sb.append("  documento: ").append(documento).append("\n");
     sb.append("  profissao: ").append(profissao).append("\n");

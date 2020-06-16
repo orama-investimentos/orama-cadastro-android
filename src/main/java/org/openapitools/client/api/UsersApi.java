@@ -31,6 +31,7 @@ import org.openapitools.client.model.Erro;
 import java.io.File;
 import org.openapitools.client.model.LoginCriado;
 import org.openapitools.client.model.LoginSenhaObjeto;
+import org.openapitools.client.model.Pendencia;
 import org.openapitools.client.model.PerfilUsuario;
 import org.openapitools.client.model.Submetido;
 import org.openapitools.client.model.Termos;
@@ -47,7 +48,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
 
 public class UsersApi {
-  String basePath = "https://cadastro.orama.com.br/api/contas/v3.0";
+  String basePath = "https://cadastro.orama.com.br/api/contas/v2.0";
   ApiInvoker apiInvoker = ApiInvoker.getInstance();
 
   public void addHeader(String key, String value) {
@@ -1898,6 +1899,256 @@ public class UsersApi {
             } catch (ApiException exception) {
                errorListener.onErrorResponse(new VolleyError(exception));
             }
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
+    } catch (ApiException ex) {
+      errorListener.onErrorResponse(new VolleyError(ex));
+    }
+  }
+  /**
+  * Retorna lista de pendências do perfil caso existam
+  * 
+   * @param cpf CPF do perfil
+   * @return List<Pendencia>
+  */
+  public List<Pendencia> accountPerfilPendenciaGet (String cpf) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = null;
+    // verify the required parameter 'cpf' is set
+    if (cpf == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'cpf' when calling accountPerfilPendenciaGet",
+        new ApiException(400, "Missing the required parameter 'cpf' when calling accountPerfilPendenciaGet"));
+    }
+
+    // create path and map variables
+    String path = "/perfil/{cpf}/pendencia/".replaceAll("\\{" + "cpf" + "\\}", apiInvoker.escapeString(cpf.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+    String[] contentTypes = {
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+    }
+
+    String[] authNames = new String[] { "Api-Key", "JWT" };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return (List<Pendencia>) ApiInvoker.deserialize(localVarResponse, "array", Pendencia.class);
+      } else {
+         return null;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
+   * Retorna lista de pendências do perfil caso existam
+   * 
+   * @param cpf CPF do perfil
+  */
+  public void accountPerfilPendenciaGet (String cpf, final Response.Listener<List<Pendencia>> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = null;
+
+    // verify the required parameter 'cpf' is set
+    if (cpf == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'cpf' when calling accountPerfilPendenciaGet",
+        new ApiException(400, "Missing the required parameter 'cpf' when calling accountPerfilPendenciaGet"));
+    }
+
+    // create path and map variables
+    String path = "/perfil/{cpf}/pendencia/".replaceAll("\\{format\\}","json").replaceAll("\\{" + "cpf" + "\\}", apiInvoker.escapeString(cpf.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+
+
+
+    String[] contentTypes = {
+      
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      
+
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+          }
+
+    String[] authNames = new String[] { "Api-Key", "JWT" };
+
+    try {
+      apiInvoker.invokeAPI(basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+            try {
+              responseListener.onResponse((List<Pendencia>) ApiInvoker.deserialize(localVarResponse,  "array", Pendencia.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
+    } catch (ApiException ex) {
+      errorListener.onErrorResponse(new VolleyError(ex));
+    }
+  }
+  /**
+  * Solicita a análise das pendências. Este endpoint deve ser utilizado após o upload dos documentos relacionados as pendências.
+  * 
+   * @param cpf CPF do perfil
+   * @return void
+  */
+  public void accountPerfilPendenciaSolicitaranalisePost (String cpf) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = null;
+    // verify the required parameter 'cpf' is set
+    if (cpf == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'cpf' when calling accountPerfilPendenciaSolicitaranalisePost",
+        new ApiException(400, "Missing the required parameter 'cpf' when calling accountPerfilPendenciaSolicitaranalisePost"));
+    }
+
+    // create path and map variables
+    String path = "/perfil/{cpf}/pendencia/solicitar-analise/".replaceAll("\\{" + "cpf" + "\\}", apiInvoker.escapeString(cpf.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+    String[] contentTypes = {
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+    }
+
+    String[] authNames = new String[] { "Api-Key", "JWT" };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return ;
+      } else {
+         return ;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
+   * Solicita a análise das pendências. Este endpoint deve ser utilizado após o upload dos documentos relacionados as pendências.
+   * 
+   * @param cpf CPF do perfil
+  */
+  public void accountPerfilPendenciaSolicitaranalisePost (String cpf, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = null;
+
+    // verify the required parameter 'cpf' is set
+    if (cpf == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'cpf' when calling accountPerfilPendenciaSolicitaranalisePost",
+        new ApiException(400, "Missing the required parameter 'cpf' when calling accountPerfilPendenciaSolicitaranalisePost"));
+    }
+
+    // create path and map variables
+    String path = "/perfil/{cpf}/pendencia/solicitar-analise/".replaceAll("\\{format\\}","json").replaceAll("\\{" + "cpf" + "\\}", apiInvoker.escapeString(cpf.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+
+
+
+    String[] contentTypes = {
+      
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      
+
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+          }
+
+    String[] authNames = new String[] { "Api-Key", "JWT" };
+
+    try {
+      apiInvoker.invokeAPI(basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+              responseListener.onResponse(localVarResponse);
           }
       }, new Response.ErrorListener() {
           @Override

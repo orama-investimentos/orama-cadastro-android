@@ -99,7 +99,7 @@ public class ContaBancaria {
   /**
    * Informação que define se é uma conta conjunta. Caso seja, deve ser definido como true.
    **/
-  @ApiModelProperty(required = true, value = "Informação que define se é uma conta conjunta. Caso seja, deve ser definido como true.")
+  @ApiModelProperty(value = "Informação que define se é uma conta conjunta. Caso seja, deve ser definido como true.")
   public Boolean getContaConjunta() {
     return contaConjunta;
   }
@@ -110,7 +110,7 @@ public class ContaBancaria {
   /**
    * Informação se o segundo participante (co-titular) é o titular da conta, caso não seja, o primeiro participante quem esta preenchendo a conta é o titular.
    **/
-  @ApiModelProperty(required = true, value = "Informação se o segundo participante (co-titular) é o titular da conta, caso não seja, o primeiro participante quem esta preenchendo a conta é o titular.")
+  @ApiModelProperty(value = "Informação se o segundo participante (co-titular) é o titular da conta, caso não seja, o primeiro participante quem esta preenchendo a conta é o titular.")
   public Boolean getSegundoParticipanteTitular() {
     return segundoParticipanteTitular;
   }
@@ -119,9 +119,9 @@ public class ContaBancaria {
   }
 
   /**
-   * CPF do co-titular caso seja conta conjunta. CPF deve ser válido. O CPF tem que ter os 11 dígitos com a máscara incluindo os pontos e hífen.  - Obrigatório caso a conta bancária seja conta conjunta
+   * CPF do co-titular caso seja conta conjunta. CPF deve ser válido. O CPF tem que ter os 11 dígitos com a máscara incluindo os pontos e hífen.
    **/
-  @ApiModelProperty(value = "CPF do co-titular caso seja conta conjunta. CPF deve ser válido. O CPF tem que ter os 11 dígitos com a máscara incluindo os pontos e hífen.  - Obrigatório caso a conta bancária seja conta conjunta")
+  @ApiModelProperty(value = "CPF do co-titular caso seja conta conjunta. CPF deve ser válido. O CPF tem que ter os 11 dígitos com a máscara incluindo os pontos e hífen.")
   public String getCpfCotitular() {
     return cpfCotitular;
   }
